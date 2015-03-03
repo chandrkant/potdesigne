@@ -1,0 +1,119 @@
+{{#form-for model.propertyManager class="pure-form"}}
+<div class="panel panel-primary pure-u-1">
+  <div class="panel-heading">
+    <h3 class="panel-title">Personal information</h3>
+  </div>
+
+  <div class="panel-body">
+    <div class="row">
+      <div class="col-xs-12 col-sm-6 col-md-4 form-group">
+        {{input customerContactEmailAddress}}
+      </div>
+      <div class="col-xs-12 col-sm-6 col-md-4 form-group">
+        {{input customerContactPhoneNumber}}
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-xs-12 col-sm-6 col-md-4 form-group">
+        {{input name}}
+      </div>
+      <div class="col-xs-12 col-sm-6 col-md-4 form-group">
+        {{input url}}
+      </div>
+    </div>
+
+
+    <div class="row">
+      <div class="col-xs-12 form-group">
+        <div class="btn-group" data-toggle="buttons">
+          {{#if model.propertyManager.acceptsCash}}
+          <label class="btn btn-default active">
+            {{#input acceptsCash}}
+            {{input-field acceptsCash as="checkbox"}}Accept Cash
+            {{/input}}
+          </label>
+          {{else}}
+          <label class="btn btn-default">
+            {{#input acceptsCash}}
+            {{input-field acceptsCash as="checkbox"}}Accept Cash
+            {{/input}}
+          </label>
+          {{/if}}
+
+
+          {{#if model.propertyManager.acceptsChecks}}
+          <label class="btn btn-default active">
+            {{#input acceptsChecks}}
+            {{input-field acceptsChecks as="checkbox"}}Accept Checks
+            {{/input}}
+          </label>
+          {{else}}
+          <label class="btn btn-default">
+            {{#input acceptsChecks}}
+            {{input-field acceptsChecks as="checkbox"}}Accept Checks
+            {{/input}}
+          </label>
+          {{/if}}
+
+
+          {{#if model.propertyManager.acceptsCreditCardsOffline}}
+          <label class="btn btn-default active">
+            {{#input acceptsCreditCardsOffline}}
+            {{input-field acceptsCreditCardsOffline as="checkbox"}}Accept Credit Card Offline
+            {{/input}}
+          </label>
+          {{else}}
+          <label class="btn btn-default">
+            {{#input acceptsCreditCardsOffline}}
+            {{input-field acceptsCreditCardsOffline as="checkbox"}}Accept Credit Card Offline
+            {{/input}}
+          </label>
+          {{/if}}
+
+        </div>
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="col-xs-12 form-group">
+
+        <div class="btn-group" data-toggle="buttons">
+         {{#if model.propertyManager.acceptsOnlinePayments}}
+         <label class="btn btn-default active">
+          {{#input acceptsOnlinePayments}}
+          {{input-field acceptsOnlinePayments as="checkbox" }}Accept Online Payment
+          {{/input}}
+        </label>
+        {{else}}
+        <label class="btn btn-default">
+          {{#input acceptsOnlinePayments}}
+          {{input-field acceptsOnlinePayments as="checkbox" }}Accept Online Payment
+          {{/input}}
+        </label>
+        {{/if}}
+
+        {{#if model.propertyManager.acceptsMoneyOrders}}
+        <label class="btn btn-default active">
+          {{#input acceptsMoneyOrders}}
+          {{input-field acceptsMoneyOrders as="checkbox"}}Accept Money Order
+          {{/input}}
+        </label>
+        {{else}}
+        <label class="btn btn-default">
+          {{#input acceptsMoneyOrders}}
+          {{input-field acceptsMoneyOrders as="checkbox"}}Accept Money Order
+          {{/input}}
+        </label>
+        {{/if}}
+
+
+      </div>
+
+    </div>
+  </div>
+
+</div>
+</div>
+<input class="btn btn-primary btn-lg" type="submit" value="Submit" {{action "update" content}}>
+{{/form-for}}
+

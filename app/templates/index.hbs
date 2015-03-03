@@ -1,0 +1,113 @@
+<div class="row center">
+  <h1 class="hero-statement">If renting had an easy button.</h1>
+	<div id="search-form-container" class="col-xs-12 col-sm-6 col-sm-offset-3 border-block">
+		<div class="alert alert-info alert-dismissible" role="alert">
+		  <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+		  	<span aria-hidden="true">&times;</span>
+		  </button>
+		  <strong>Hey!</strong> For now we're officially supporting Lawrence & Manhattan Kansas.
+		</div>
+		<form id="search-form" role="form" class="pure-form">
+			<div class="form-group">
+				<select id="city-dropdown" name="city" class="form-control input-lg">
+					<option value="lawrence">Lawrence, KS</option>
+					<option value="manhattan" selected>Manhattan, KS</option>
+				</select>
+			</div>
+			    
+			<button type="submit" class="btn btn-primary btn-block" {{action "rental_offerings_list"}} >
+        Take Me Home
+      </button>
+		</form>
+	</div> <!-- #search-form-container -->
+</div> <!-- .row .center -->
+
+<div class="paperless-form row center">
+  <h1 class="center one-form-slogan"> One Form To Rule Them All. </h1>
+  <div class="paper-list-wrapper clearfix">  
+    <div class="paper-list col-xs-12 col-sm-6">
+      <div class="paper-item first-item" >test 1</div>
+      <div class="paper-item second-item">test 2</div>
+      <div class="paper-item third-item">test 3</div>
+      <div class="paper-item fourth-item">test 4</div>
+      <div class="paper-item fifth-item">test 5</div>
+    </div>
+    
+    <div class="Rental-form-wrapper">
+      <div class="col-xs-12 col-sm-3 col-md-3">
+        <div class="left-div">Fill out this form once and apply to as many properties as you want.</div>
+      </div>
+      <div class="col-xs-12 col-sm-6 Rental-form-main">
+        <div class="panel-heading">
+          <h3 class="panel-title">Rental Tenant Form</h3>
+        </div>
+        <div class="panel-body">
+          <form class="ember-view pure-form" >
+            <div class="row">
+              <div class="col-xs-12 col-sm-6 col-md-6">
+                <div class="ember-view string firstName form-group" id="">
+                  <label for="input-first-name">First name</label>
+                  <input type="text" value="" class="ember-view ember-text-field form-control" id="">
+                </div>
+              </div>
+              <div class="col-xs-12 col-sm-6 col-md-6">
+                <div class="ember-view string lastName form-group" id="">
+                  <label for="input-last-name">Last name</label>
+                  <input type="text" value="" class="ember-view ember-text-field form-control" id="">
+                </div>
+              </div>
+            </div>
+        
+            <div class="row">
+              <div class="col-xs-12 col-sm-12 col-md-12">
+                <div class="ember-view string email form-group" id="">
+                  <label for="input-email">Email address</label>
+                  <input type="email" value="" class="ember-view ember-text-field form-control" id="">
+                </div>
+              </div>
+            </div>
+        
+            <div class="row">
+              <div class="col-xs-12 col-sm-6 col-md-6">
+                <div class="ember-view string firstName form-group" id="">
+                  <label for="Label1">Label</label>
+                  <input type="text" value="" class="ember-view ember-text-field form-control" id="">
+                </div>
+              </div>
+              <div class="col-xs-12 col-sm-6 col-md-6">
+                <div class="ember-view string lastName form-group" id="">
+                  <label for="Label2">Label</label>
+                  <input type="text" value="" class="ember-view ember-text-field form-control" id="">
+                </div>
+              </div>
+            </div>
+        
+            <div class="row">
+              <div class="col-xs-12 col-sm-6 col-md-6">
+                <div class="ember-view string firstName form-group" id="">
+                  <label for="Label3">Label</label>
+                  <input type="text" value="" class="ember-view ember-text-field form-control" id="">
+                </div>
+              </div>
+              <div class="col-xs-12 col-sm-6 col-md-6">
+                <div class="ember-view string lastName form-group" id="">
+                  <label for="Label4">Label</label>
+                  <input type="text" value="" class="ember-view ember-text-field form-control" id="">
+                </div>
+              </div>
+            </div>
+        
+            <button class="btn btn-primary btn-lg btn-block" type="submit">
+              Submit
+            </button>
+          </form> <!-- .ember-view .pure-form end -->
+        </div> <!-- .panel-body end -->
+      </div> <!-- .col-xs-12 .col-sm-6 .Rental-form-main end -->
+      <div class="col-xs-12 col-sm-3 col-md-3">
+        <div class="right-div">Just update it every time you rent, and never touch paper tenant forms again.</div>
+      </div> 
+    </div> <!-- .Rental-form-wrapper end -->
+  </div> <!-- .paper-list-wrapper .clearfix end -->
+</div> <!-- .paperless-form .row .center end -->
+
+{{partial 'home-alert'}}

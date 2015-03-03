@@ -1,0 +1,158 @@
+<script type="text/javascript">
+$(document).ready( function() {
+    $('#myCarousel').carousel({
+    	interval:   40000
+	});
+	
+	var clickEvent = false;
+	$('#myCarousel').on('click', '.nav-pills a', function() {
+			clickEvent = true;
+			$('.nav-pills li').removeClass('active');
+			$(this).parent().addClass('active');		
+	}).on('slid.bs.carousel', function(e) {
+		if(!clickEvent) {
+			var count = $('.nav-pills').children().length -1;
+			var current = $('.nav-pills li.active');
+			current.removeClass('active').next().addClass('active');
+			var id = parseInt(current.data('slide-to'));
+			if(count == id) {
+				$('.nav-pills li').first().addClass('active');	
+			}
+		}
+		clickEvent = false;
+	});
+	
+  var $lightbox = $('#lightbox');
+  $('[data-target="#lightbox"]').on('click', function(event) {
+      var $img = $(this).find('img'), 
+          src = $img.attr('src'),
+          alt = $img.attr('alt'),
+          css = {
+              'maxWidth': $(window).width() - 100,
+              'maxHeight': $(window).height() - 100
+          };
+  
+      $lightbox.find('.close').addClass('hidden');
+      $lightbox.find('img').attr('src', src);
+      $lightbox.find('img').attr('alt', alt);
+      $lightbox.find('img').css(css);
+  });
+  
+  $lightbox.on('shown.bs.modal', function (e) {
+      var $img = $lightbox.find('img');
+          
+      $lightbox.find('.modal-dialog').css({'width': $img.width()});
+      $lightbox.find('.close').removeClass('hidden');
+  });
+	
+});
+</script>
+
+<div class="container">
+	<div class="row">
+		<div class="col-md-6"> <!--product images gallery start-->
+			<div id="myCarousel" class="carousel slide" data-ride="carousel">
+			<div class="carousel-inner"> <!-- Wrapper for slides -->
+			  <div class="item active">
+			    <a href="#" class="thumbnail" data-toggle="modal" data-target="#lightbox"><img src="/assets/images/slider1.jpg"></a>
+			  </div> <!-- End Item -->
+			  <div class="item">
+			    <a href="#" class="thumbnail" data-toggle="modal" data-target="#lightbox"><img src="/assets/images/slider2.jpg"></a>
+			  </div> <!-- End Item -->
+			  <div class="item">
+			    <a href="#" class="thumbnail" data-toggle="modal" data-target="#lightbox"><img src="/assets/images/slider3.jpg"></a>
+			  </div> <!-- End Item -->
+				<div class="item">
+			    <div class="thumbnail"><iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3015.7602787055835!2d-73.89721069999995!3d40.8990731!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x89c256598d232339%3A0xda8b85263f93969e!2sBroadway%2C+New+York%2C+USA!5e0!3m2!1sen!2sin!4v1409203571527" width="545" height="404" frameborder="0" style="border:0"></iframe></div>
+			  </div> <!-- End Item -->
+			</div> <!-- End .carousel-inner -->
+			  <ul class="nav nav-pills nav-justified">
+				  <li data-target="#myCarousel" data-slide-to="0" class="active"><a href="#"><img src="/assets/images/thumb-slider1.jpg"></a></li>
+				  <li data-target="#myCarousel" data-slide-to="1"><a href="#"><img src="/assets/images/thumb-slider2.jpg"></a></li>
+				  <li data-target="#myCarousel" data-slide-to="2"><a href="#"><img src="/assets/images/thumb-slider3.jpg"></a></li>
+					<li data-target="#myCarousel" data-slide-to="3"><a href="#"><img src="/assets/images/thumb-map.jpg"></a></li>
+			  </ul>
+			</div> <!-- End .myCarousel -->
+	</div> <!-- .col-md-6 product images gallery end-->
+	<div class="col-md-6 details-right"> <!--product detail start-->
+	  <div class="panel with-nav-tabs panel-default">
+	    <div class="panel-heading">
+        <ul class="nav nav-tabs">
+            <li class="active"><a href="#tab1primary" data-toggle="tab">Info</a></li>
+            <!--<li><a href="#tab2primary" data-toggle="tab">Message</a></li>-->
+            <li><a href="#tab3primary" data-toggle="tab">Map</a></li>
+        </ul>
+	    </div>
+	  </div>
+	  <div class="panel-body">
+	    <div class="tab-content">
+	      <div class="tab-pane fade in active" id="tab1primary">
+		
+					<div class="row">
+						<h1 class="col-md-8">Broadway <span>New York City</span></h1>
+						<span class="col-md-4">$4,200</span>
+					</div>
+					
+					<ul class="icons-options clearfix">
+						<li class="walk-icon col-md-4"><span>3 mins</span>walk to campus</li>
+						<li class="bed-icon col-md-4"><span>2</span>Bedrooms</li>
+						<li class="bath-icon col-md-4"><span>2</span>Bathrooms</li>
+					</ul>
+					<div class="row">
+						<div class="col-md-6">
+							<h3>Details</h3>
+							<ul>
+								<li>Dishwasher</li>
+								<li>Washer</li>
+								<li>Dryer</li>
+								<li>Central Air</li>
+							</ul>
+						</div>
+
+						<div class="col-md-6">
+							<h3>Nearest</h3>
+							<ul>
+								<li>24 Hour Food</li>
+								<li>Laundromat</li>
+								<li>Grocery Store</li>
+								<li>Coffeeshop</li>
+								<li>Walmart</li>
+							</ul>
+						</div>
+					</div>
+						
+					<h3>Description</h3>
+					<p>This amazing x bedroom home This amazing x bedroom home This amazing x bedroom home This amazing x bedroom home This amazing x bedroom home This amazing x.</p>
+					<h3>Ways to pay rent</h3>
+					<ul>
+						<li>Cash</li>
+						<li>Credit Card</li>
+						<li>Online</li>
+					</ul>						
+				</div>
+        <!--<div class="tab-pane fade" id="tab2primary">Primary 2</div>-->
+        <div class="tab-pane fade" id="tab3primary">Primary 3</div>
+			</div>
+		</div>
+	</div>     
+	
+	<div class="buttons-set">
+		<button class="button-xlarge pure-button">Apply</button>
+		<!--<button class="button-xlarge pure-button">Contact</button>-->
+		<button class="button-xlarge pure-button">Share</button>
+	</div>
+	
+	</div> <!-- .row product detail end-->
+</div> <!-- .container end -->
+
+<div id="lightbox" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
+	<div class="modal-dialog">
+	  <button type="button" class="close hidden" data-dismiss="modal" aria-hidden="true">×</button>
+	  <div class="modal-content">
+	    <div class="modal-body">
+	    	<img src="" alt="" />
+	    </div>
+	  </div>
+	</div>
+</div> <!-- #lightbox end -->
+

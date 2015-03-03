@@ -1,0 +1,200 @@
+{{#if errorMessage}}
+         <div class="alert alert-error">
+          <button type="button" class="close"  data-dismiss="alert">&times;</button>
+            {{errorMessage}}
+           </div>
+         {{/if}}
+     {{#if successMessage}}
+     <div class="alert alert-success">
+        <button type="button" class="close"  data-dismiss="alert">&times;</button>
+         <h4>{{successMessage}}</h4>
+      </div>
+      {{/if}}
+{{#if session.applicant.property_manager_id}}
+<div class="page-title clearfix">
+  <h3>Uint Listing</h3>
+  <div class="container">
+    <div class="row">
+      <div class="panel-primary filterable">
+        <div class="page-title clearfix">
+          <button class="button-xlarge pure-button software-btn">Software Import</button>
+          <div class="bhoechie-tab-menu">
+            <button class="button-xlarge pure-button import-button"><span>Close</span><strong>Import from File(s)</strong><em class="arrow-up"></em></button>
+            <button class="button-xlarge pure-button pure-button-primary addunit-btn"><span>Close</span><strong>Add a Unit</strong><em class="arrow-up"></em></button>
+          </div>
+        </div>
+
+        <div class="modal fade in software-modal highlight" id="lightbox">
+          <div class="modal-dialog">
+            <button class="close" type="button">×</button>
+            <div class="modal-content">
+              <div class="modal-body">
+                <div class="comingsoon">
+                  Coming Soon
+                </div>
+        <!-- (display: none) start -->
+                <div style="display: none;">
+                  <div class="row bs-wizard popup-heading" style="border-bottom:0;">
+                    <div class="col-xs-12 col-sm-6 bs-wizard-step complete">
+                      <div class="text-center bs-wizard-stepnum">Step 1: Build Profile
+                      </div>
+                      <div class="progress">
+                        <div class="progress-bar">
+                        </div>
+                      </div>
+                      <a class="bs-wizard-dot" href="#"></a>
+                    </div>
+                      <div class="col-xs-12 col-sm-6 bs-wizard-step disabled">
+                        <div class="text-center bs-wizard-stepnum">Step 2: Get Listings </div>
+                          <div class="progress">
+                            <div class="progress-bar">
+                            </div>
+                          </div>
+                          <a class="bs-wizard-dot" href="#"></a>
+                        </div>
+                      </div>
+                      <div class="bs-wizard-info text-center">
+                        <h3>Add listings to Zillow Rental</h3>
+                            <p>if you already have your listing stored in either a file or other software, we may be able to import them for you to use.</p>
+                          <div class="row">
+                            <button href="#" class="btn btn-xlarge" /><img src="/assets/images/import-software.png" alt="" /><span>Software Import</span>
+                            </button>
+                            <button href="#" class="btn btn-xlarge" /><img src="/assets/images/upload-file.png" alt="" /><span>Upload File</span></button>
+                          </div>
+                      </div>
+                      <br><br>
+                      <div class="row">
+                        <div class="control-group col-xs-12 col-sm-6 col-md-6 col-lg-6">
+                          <button class="btn btn-primary pure-u-1">Get Start</button>
+                        </div>
+                        <div class="control-group col-xs-12 col-sm-6 col-md-6 col-lg-6">
+                          <button class="btn btn-default pure-u-1">Add Listing Manually</button>
+                        </div>
+                      </div>
+                    </div><!-- (display: none) close -->
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="modal-backdrop fade in software-backdrop">
+            </div>
+            <div class="import-file bhoechie-tab-content brdr bgc-fff box-shad">
+              <form enctype="multipart/form-data" novalidate="novalidate" id="fileUpload" {{action 'uploadFile' content on="submit"}} class="form-horizontal wpc_contact pure-form" data-ember-action="1"  method="POST">
+                <fieldset>
+                  <div class="col-xs-12 col-sm-3 col-md-2 col-lg-2 uploadfile-title" id="legend">
+                    <strong>Upload Your file: </strong>
+                      <div class="alert hidden" id="alert-message">
+                      </div>
+                  </div>
+                  <div class="control-group col-xs-12 col-sm-4 col-md-3 col-lg-3">
+                    <!-- File Upload -->
+                    <div class="controls">
+                      <input type="file" name="file" id="fileInput" class="input-file">
+                    </div>
+                  </div>
+                  <div class="control-group col-xs-12 col-sm-3 col-md-3 col-lg-2">
+                   <!-- Button -->
+                   <div class="controls">
+                     <button class="button-xlarge pure-button pure-button-primary">Upload</button>
+                    </div>
+                  </div>
+                </fieldset>
+              </form>
+            </div>
+
+            <div class="arrow-up"> </div>
+            <div class="add-units bhoechie-tab-content brdr bgc-fff box-shad">
+              <form class="pure-form row" {{action 'addUnit' content on='submit'}} enctype="multipart/form-data" id="myForm">
+                <div class="col-xs-12 col-sm-6 col-md-3 col-lg-3"><input type="text" name="rental_complex[full_address]" placeholder="street address city state zip" id="address" ></div>
+                <input type="hidden" name="rental_complex[property_manager_id]" value="{{unbound session.applicant.property_manager_id}}"/>
+                <div class="col-xs-12 col-sm-3 col-md-2 col-lg-2"><input type="text" name="rental_complex[name]" placeholder="Name" id="unit"></div>
+                <div class="col-xs-12 col-sm-3 col-md-2 col-lg-2"><input type="text" name="rental_offerings[price]" placeholder="$ price" id="price"></div>
+                <div class="col-xs-12 col-sm-3 col-md-1 col-lg-1">
+                  <select id="beds" name="rental_offerings[bedroom_count]">
+                    <option value="0">Beds</option>
+                    <option value="1">1Bd</option>
+                    <option value="2">2Bd</option>
+                    <option value="3">3Bd</option>
+                    <option value="4">4Bd</option>
+                    <option value="5">5Bd</option>
+                  </select>
+                </div>
+                <div class="col-xs-12 col-sm-3 col-md-1 col-lg-1">
+                  <select  id="bath" name="rental_offerings[full_bathroom_count]">
+                    <option value="0">Baths</option>
+                    <option value="1">1Ba</option>
+                    <option value="2">2Ba</option>
+                    <option value="3">3Ba</option>
+                    <option value="4">4Ba</option>
+                    <option value="5">5Ba</option>
+                  </select>
+                </div>
+                <div class="col-xs-12 col-sm-4 col-md-2 col-lg-2">
+                  <input id="photo" class="add-photo-link" multiple="multiple" name="property_photos[photo][]" type="file">
+                </div>
+                <div class="col-xs-12 col-sm-2 col-md-1 col-lg-1">
+                  <button type="submit" class="save-link button-xlarge pure-button pure-button-primary">Save</button>
+                </div>
+              </form>
+             <div class="loder" id="wait"><img src="/assets/images/82.GIF"></div>
+            </div>
+    </div>
+  </div>
+</div>
+{{/if}}
+<div class="page-title clearfix">
+  <h1>Properties Listing</h1>
+  {{#link-to 'rental-offerings.new' class="btn btn-primary"}}Add{{/link-to}}
+  <button class="btn btn-default applicants-model" {{action 'openDetailsModal'}} >Contracts</button>
+  <!--{{#link-to 'attachments.index' class="btn btn-default"}}Contracts{{/link-to}}-->
+</div>
+<div class="border-block">
+
+<table class="table table-striped table-hover table-bordered rental-offerings-table">
+  <thead>
+    <th>Address</th>
+    <th>Bed</th>
+    <th>Bath</th>
+    <th>Rent</th>
+    <th>Action</th>
+  </head>
+  <tbody>
+    {{log model}}
+
+    {{#each model}}
+      <tr>
+        <td><strong>Address</strong>
+          <div>{{headline}}</div>
+        </td>
+        <td><strong>Bed</strong>
+          <div>{{bedroomCount}}</div>
+        </td>
+        <td><strong>Bath</strong>
+          <div>{{fullBathroomCount}}</div>
+        </td>
+        <td><strong>Rent</strong>
+          <div>${{monthlyRentFloor}}</div>
+        </td>
+        <td>
+          {{#link-to 'rental-offerings.show' id class="btn btn-primary"}}show{{/link-to}}
+          {{#link-to 'rental-offerings.edit' id class="btn btn-primary"}}Edit{{/link-to}}
+          <button {{action "deleteRecord" this}} class="btn btn-danger"> Delete</button>
+          {{#link-to 'rental-offerings.applicants' id class="btn btn-primary"}} <span class="badge">{{appliesCount}} </span> Applicants{{/link-to}}
+        </td>
+      </tr>
+    {{/each}}
+  </tbody>
+</table>
+
+				<div class="row">
+					<div class="col-xs-12 col-sm-8 col-md-8 form-group">
+{{page-numbers content=content}}
+					</div>
+					<div class="col-xs-12 col-sm-4 col-md-4 form-group">
+<button id="list-exporter" {{action 'exportCsvXls' }} class="btn btn-default right btn-padding-top margin-left" type="button">Export (CSV Format)</button>
+{{#link-to 'rental-complexes.index' class="btn btn-primary right btn-padding-top"}}Rental Complex{{/link-to}}
+					</div>
+				</div>
+
+
+</div>

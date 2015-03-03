@@ -1,0 +1,222 @@
+<div class="map-content-wrapper">
+
+<input type="hidden" id="bed" val="">
+<div class="search-filter col-xs-12 col-sm-4 col-md-4 col-lg-4">
+  {{#form-for model class="pure-form pure-form-stacked"}}
+  <legend class="filter-title">Search Filters <span class="glyphicon glyphicon-resize-vertical right"></span></legend>
+  <div class="upload-areas-photo">Apartments in Dighton, KS that have <strong>photos</strong>.</div>
+  <div class="form-container">
+    <fieldset>
+      <div class="map-location-input">
+        {{input location  as='select'
+          label="Location"
+          collection='view.controller.locations'
+          optionValuePath="content"
+          optionLabelPath="content"
+        }}
+      </div>
+    </fieldset>
+    <fieldset>
+      <label>Price</label>
+      {{input-field minPrice placeholder="min" id="minPrice" class="pure-u-1-3" }}
+      <span class="to-text">to</span>
+      {{input-field maxPrice placeholder="max" id="maxPrice" class="pure-u-1-3" }}
+    </fieldset>
+    <fieldset>
+      <label>Bedrooms</label>
+      <div class="bedroom-options">
+        <button class="button-xlarge pure-button" type="button" value="">Studio</button>
+        <button class="button-xlarge pure-button" type="button" id="1" >1</button>
+        <button class="button-xlarge pure-button" type="button" id="2" >2</button>
+        <button class="button-xlarge pure-button" type="button" id="3" >3</button>
+        <button class="button-xlarge pure-button" type="button" id="4" >4+</button>
+      </div>
+    </fieldset>
+  </div>
+  <button id="search" type="submit" class="pure-button pure-button-primary" {{action "search"}}>Search </button>
+  {{/form-for}}
+</div>
+
+
+
+</div>
+
+<div id="map">
+
+<div class="map-content-wrapper">
+    <div class="filter-view">
+      <a id="bmap" class="pure-button map-icon highlight">Map</a>
+      <a id="blist" class="pure-button list-icon">List</a>
+    </div>
+</div>
+
+  <div class="search-map">
+    <div id="list-and-map" class="row">
+      <div id="map-canvas" style="height: 807px"class="col-xs-12 col-sm-12 border-block"></div>
+    </div>
+  </div>
+</div>
+
+
+<div id="list" class="map-content-wrapper">
+  <div class=" search-list clearfix row">
+    <div class="container-fluid filter-list-wrapper col-sm-offset-4 col-xs-12 col-sm-8 col-md-8 col-lg-8">
+      <div class="clearfix filter-wrapper">
+        <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+          <label for="sort" class="pure-form sortby-option new-label">
+            Sort by:
+            <select id="sort">
+              <option {{action "sort" "list"}} value="pl">Price- low to high </option>
+              <option {{action "sort" "list"}} value="ph">Price- high to low </option>
+              <option {{action "sort" "list"}} value="f">Featured</option>
+              <option {{action "sort" "list"}} value="r">Recent</option>
+            </select>
+          </label>
+          <div class="filter-view filter-view-list">
+            <a id ="lmap"  class="pure-button map-icon ">Map</a>
+            <a id ="llist" class="pure-button list-icon highlight">List</a>
+           <!--<a id ="lgrid" class="pure-button grid-icon">Grid</a>-->
+          </div>
+        </div>
+      </div>
+      <div class="container-pad border-block" id="property-listings">
+
+          <table class="table table-striped table-hover table-bordered">
+            <thead>
+              <th>Address</th>
+              <th>Bed</th>
+              <th>Bath</th>
+              <th>Rent</th>
+              <th class="last-td"></th>
+            </thead>
+           <tbody>
+            {{#each offering in model.rentalOfferingPage}}
+              <tr>
+                <td class="street-names">
+                    <a class="rental-offering-attribute street-name" {{bind-attr href= offering.url}} target="_newtab">{{offering.rentalComplexStreetName}}</a>
+                    <br>
+                    <span class="rental-offering-attribute-name cross-street-name">at
+                      {{offering.rentalComplexCrossStreetName}}</span>
+                </td>
+                <td>
+                  <strong>Bed</strong>
+                  <div class="rental-offering-attribute bedroom-count">{{bedroomCountValue offering.bedroomCount}}</div>
+                </td>
+                <td>
+                  <strong>Bath</strong>
+                    <div class="rental-offering-attribute">{{bathroomCountValue offering.fullBathroomCount  offering.halfBathroomCount}}</div>
+                </td>
+                <td>
+                <strong>Rent</strong>
+                   <div class="rental-offering-attribute monthly-rent">${{offering.monthlyRentFloor}}</div>
+                </td>
+              <td>
+                <a  {{action 'openDetailsModal' offering this.applicants}} class="btn btn-default"> Details
+                </a>
+            {{#if offering.starred}}
+              <a id="star-yellow-{{unbound offering.id}}"style="padding:0px" {{action 'deleteStarredProperties' offering this.applicants}} class="pure-button star-icon-yellow"><span></span></a>
+             <a id="star-white-{{unbound offering.id}}" {{action 'createStarredProperties' offering this.applicants}} style="display:none" class="pure-button star-icon"><span></span></a>
+            {{else}}
+               <a id="star-white-{{unbound offering.id}}" {{action 'createStarredProperties' offering this.applicants}} class="pure-button star-icon"><span></span></a>
+              <a id="star-yellow-{{unbound offering.id}}"style="padding:0px; display:none" {{action 'deleteStarredProperties' offering this.applicants}} class="pure-button star-icon-yellow"><span></span></a>
+            {{/if}}
+           <div id="socialHolder" class="col-md-3 right">
+              <div id="socialShare" class="btn-group share-group">
+                  <a data-toggle="dropdown" class="btn btn-info">
+                    <i class="fa fa-share-alt fa-inverse"></i>
+                  </a>
+              <button href="#" data-toggle="dropdown" class="btn btn-info dropdown-toggle share">
+                <span class="caret"></span>
+              </button>
+              <ul class="dropdown-menu">
+<!-- Go to www.addthis.com/dashboard to generate a new set of sharing buttons -->
+              <li><a href="https://api.addthis.com/oexchange/0.8/forward/facebook/offer?url=http%3A%2F%2Fwww.addthis.com&pubid=ra-54350220470aa4a5&ct=1&title=AddThis%20-%20Get%20likes%2C%20get%20shares%2C%20get%20followers&pco=tbxnj-1.0" target="_blank"><img src="https://cache.addthiscdn.com/icons/v2/thumbs/32x32/facebook.png" border="0" alt="Facebook"/></a></li>
+              <li><a href="https://api.addthis.com/oexchange/0.8/forward/twitter/offer?url=http%3A%2F%2Fwww.addthis.com&pubid=ra-54350220470aa4a5&ct=1&title=AddThis%20-%20Get%20likes%2C%20get%20shares%2C%20get%20followers&pco=tbxnj-1.0" target="_blank"><img src="https://cache.addthiscdn.com/icons/v2/thumbs/32x32/twitter.png" border="0" alt="Twitter"/></a></li>
+              <li><a href="https://api.addthis.com/oexchange/0.8/forward/google_plusone_share/offer?url=http%3A%2F%2Fwww.addthis.com&pubid=ra-54350220470aa4a5&ct=1&title=AddThis%20-%20Get%20likes%2C%20get%20shares%2C%20get%20followers&pco=tbxnj-1.0" target="_blank"><img src="https://cache.addthiscdn.com/icons/v2/thumbs/32x32/google_plusone_share.png" border="0" alt="Google+"/></a></li>
+              <li><a href="https://api.addthis.com/oexchange/0.8/forward/pinterest/offer?url=http%3A%2F%2Fwww.addthis.com&pubid=ra-54350220470aa4a5&ct=1&title=AddThis%20-%20Get%20likes%2C%20get%20shares%2C%20get%20followers&pco=tbxnj-1.0" target="_blank"><img src="https://cache.addthiscdn.com/icons/v2/thumbs/32x32/pinterest.png" border="0" alt="Pinterest"/></a></li>
+              <li><a href="https://api.addthis.com/oexchange/0.8/forward/linkedin/offer?url=http%3A%2F%2Fwww.addthis.com&pubid=ra-54350220470aa4a5&ct=1&title=AddThis%20-%20Get%20likes%2C%20get%20shares%2C%20get%20followers&pco=tbxnj-1.0" target="_blank"><img src="https://cache.addthiscdn.com/icons/v2/thumbs/32x32/linkedin.png" border="0" alt="LinkedIn"/></a></li>
+              <li><a href="https://www.addthis.com/bookmark.php?source=tbx32nj-1.0&v=300&url=http%3A%2F%2Fwww.addthis.com&pubid=ra-54350220470aa4a5&ct=1&title=AddThis%20-%20Get%20likes%2C%20get%20shares%2C%20get%20followers&pco=tbxnj-1.0" target="_blank"><img src="https://cache.addthiscdn.com/icons/v2/thumbs/32x32/addthis.png" border="0" alt="Addthis"/></a></li>
+
+                    </ul>
+          </div>
+            </div>
+        </td>
+            </tr>
+
+          {{/each}}
+          </tbody>
+      </table>
+
+        <!-- End row -->
+      </div>
+      {{page-numbers content=model.rentalOfferingPage}}
+      <!-- End container -->
+    </div>
+  </div>
+</div>
+
+<div id="grid" style="display: none;">
+  <div class="search-list clearfix row">
+    <div class="container-fluid filter-list-wrapper  col-xs-12 col-sm-8 col-md-8 col-lg-12">
+      <div class="clearfix filter-wrapper">
+        <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+          <label for="sort" class="pure-form sortby-option new-label">
+            Sort by:
+            <select id="gsort">
+              <option {{action "sort" "grid"}} value="pl">Price- low to high </option>
+              <option {{action "sort" "grid"}} value="ph">Price- high to low </option>
+              <option {{action "sort" "grid"}} value="f">Featured</option>
+              <option {{action "sort" "grid"}} value="r">Recent</option>
+            </select>
+          </label>
+          <div class="filter-view filter-view-list">
+            <a id ="gmap"  class="pure-button map-icon ">Map</a>
+            <a id ="glist" class="pure-button list-icon">List</a>
+            <!--<a id ="ggrid" class="pure-button grid-icon highlight">Grid</a>-->
+          </div>
+        </div>
+      </div>
+      {{!-- <div class="container-pad grid-view">
+        <div class="row">
+          {{#each model}}
+          <div class="col-sm-6 col-md-4">
+            <!-- Begin Listing: 609 W GRAVERS LN-->
+            <div class="brdr bgc-fff pad-10 box-shad btm-mrg-20">
+              <div class="media">
+                <a class="pull-left item-image" href="#" target="_parent">
+                  <img alt="image" class="img-responsive" src="/assets/images/slider1.jpg">
+                </a>
+                <div class="clearfix visible-xs"></div>
+                <div class="media-body fnt-smaller">
+                  <a href="#" target="_parent"></a>
+                  <h2 class="media-heading">
+                    <a href="#" target="_parent">{{rentalComplexFullAddress}} <small class="pull-right price">${{monthlyRentCeiling}}</small></a>
+                  </h2>
+                  <ul class="list-inline mrg-0 btm-mrg-10 clr-535353">
+                    <li>{{squareFootageFloor}} SqFt</li>
+                    <li style="list-style: none">|</li>
+                    <li>{{bedroomCount}} Beds</li>
+                    <li style="list-style: none">|</li>
+                    <li>{{fullBathroomCount}} Baths</li>
+                  </ul>
+                  <p class="hidden-xs">{{description}}</p>
+                  <span class="fnt-smaller fnt-lighter fnt-arial">Courtesy of HS Fox & Roach-Chestnut Hill
+                    Evergreen
+                  </span>
+                </div>
+              </div>
+            </div>
+            <!-- End Listing-->
+          </div>
+          {{/each}}
+        </div>
+        <!-- End row -->
+      </div>
+      <!-- End container --> --}}
+    </div>
+    </div>
+</div>
+<div style="clear:both"></div>
+
+
+

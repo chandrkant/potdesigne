@@ -1,0 +1,509 @@
+{{#form-for model.profile class="pure-form"}}
+  <div class="panel panel-primary pure-u-1 step1 active">
+    <div class="panel-heading">
+      <h3 class="panel-title">Personal information</h3>
+    </div>
+
+    <div class="panel-body">
+      <div class="row">
+          <div class="col-xs-12 col-sm-6 col-md-4 form-group">
+            {{#input firstName}}
+              <label for="input-first-name">First name</label>
+              {{input-field firstName class="form-control"}}
+            {{/input}}
+          </div>
+          <div class="col-xs-12 col-sm-6 col-md-4 form-group">
+            {{#input lastName}}
+              <label for="input-last-name">Last name</label>
+              {{input-field lastName class="form-control"}}
+            {{/input}}
+          </div>
+      </div>
+      <div class="row">
+        <div class="col-xs-12 col-sm-6 col-md-4 form-group">
+          {{#input bornOn}}
+              <label>Date of birth</label>
+              {{input-field bornOn class="form-control" as='date_input'}}
+          {{/input}}
+        </div>
+        <div class="col-xs-12 col-sm-6 col-md-4 form-group">
+          {{#input ssn}}
+              <label>Social Security number</label>
+              {{input-field ssn class="form-control" placeholder="123-45-6789"}}
+			  <div class="ssl-box help-block"><i class="ssl-icon"></i>128-bit SSL encryption</div>
+          {{/input}}
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-xs-12 col-sm-6 col-md-4 form-group">
+          {{#input phoneNumber}}
+              <label>Phone number</label>
+              {{input-field phoneNumber class="form-control" placeholder="785-555-5555"}}
+          {{/input}}
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-xs-12 col-sm-6 col-md-4 form-group">
+          {{#input driversLicenseNumber}}
+              <label>Drivers license number</label>
+              {{input-field driversLicenseNumber class="form-control"}}
+          {{/input}}
+        </div>
+        <div class="col-xs-12 col-sm-6 col-md-4 form-group">
+          {{#input driversLicenseState}}
+            <label>Drivers license state</label>
+            {{input-field driversLicenseState class="form-control" as="select" collection="view.controller.state_list"}}
+          {{/input}}
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-xs-12 col-sm-6 col-md-4 form-group">
+          {{#input bankName}}
+              <label>Bank name</label>
+              {{input-field bankName class="form-control"}}
+          {{/input}}
+        </div>
+        <div class="col-xs-12 col-sm-6 col-md-4 form-group">
+          {{#input bankCityAndState}}
+              <label>Bank location (city and state)</label>
+              {{input-field bankCityAndState class="form-control" placeholder="Lawrence, KS"}}
+          {{/input}}
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-xs-12 col-sm-12 col-md-8 form-group">
+          {{#input petsDescription}}
+              <label>Description of pets (if applicable)</label>
+              {{input-field petsDescription class="form-control" as="text"}}
+          {{/input}}
+          <span class="help-block">For each pet, please include the breed, age, weight, and whether the pet is spayed/neutered.</span>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-xs-12 col-sm-12 col-md-8 form-group">
+          {{#input vehiclesDescription}}
+              <label>Description of vehicles (if applicable)</label>
+              {{input-field vehiclesDescription class="form-control" as="text"}}
+          {{/input}}
+          <span class="help-block">For each vehicle, please include the make, model, color, license plate number and the state in which the vehicle is registered. Additionally, please list any bicycles which will be stored in shared areas.</span>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-xs-12 col-sm-12 col-md-8 form-group">
+          <div class="btn-group" data-toggle="buttons">
+            <label class="btn btn-default">	
+              {{#input wasEverEvicted}}
+                {{input-field wasEverEvicted as="checkbox" autocomplete="off"}} Have you ever been evicted?         
+              {{/input}}	
+            </label>  
+          </div>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-xs-12 col-sm-12 col-md-8 form-group">
+          {{#input wasEverEvictedExplanation}}
+            <label>If so, please describe</label>
+            {{input-field wasEverEvictedExplanation class="form-control" as="text"}}
+          {{/input}}
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-xs-12 col-sm-12 col-md-8 form-group">		  
+			<div class="btn-group" data-toggle="buttons">
+			  <label class="btn btn-default">	
+					  {{#input isFelon}} 
+						  {{input-field isFelon as="checkbox" autocomplete="off"}} Have you ever been convicted of a felony?			
+					  {{/input}}	
+			  </label>  
+			</div>		  
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-xs-12 col-sm-12 col-md-8 form-group">
+          {{#input isFelonExplanation}}
+            <label>If so, please describe</label>
+            {{input-field isFelonExplanation class="form-control" as="text"}}
+          {{/input}}
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-sm-4 col-md-3 form-group">
+          {{#input characterReferenceName}}
+              <label>Character reference</label>
+              {{input-field characterReferenceName class="form-control" placeholder="Jane Chen"}}
+          {{/input}}
+        </div>
+        <div class="col-sm-8 col-md-5 form-group">
+          {{#input characterReferenceContactInfo}}
+              <label>Character reference contact information (phone number and/or e-mail address)</label>
+              {{input-field characterReferenceContactInfo class="form-control"}}
+          {{/input}}
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-sm-4 col-md-3 form-group">
+          {{#input emergencyContactName}}
+            <label>Emergency contact</label>
+            {{input-field emergencyContactName class="form-control" placeholder="Clark Washington"}}
+          {{/input}}
+        </div>
+        <div class="col-sm-8 col-md-5 form-group">
+          {{#input emergencyContactPhoneNumber}}
+            <label>Emergency contact phone number</label>
+            {{input-field emergencyContactPhoneNumber class="form-control" placeholder="785-123-1234"}}
+          {{/input}}
+        </div>
+      </div>
+    </div>
+  </div> <!-- Step 1 Form ends -->
+
+  <div class="panel panel-primary step2">
+    <div class="panel-heading">
+      <h3 class="panel-title">Rental history</h3>
+    </div>
+
+    <div class="panel-body">
+
+      <div class="panel panel-default">
+        <div class="panel-heading">
+          <h3 class="panel-title">Current home</h3>
+        </div>
+
+        <div class="panel-body">
+          <div class="row">
+            <div class="col-xs-12 col-sm-12 col-md-8 form-group">
+              {{#input currentHomeStreetAddress}}
+                <label>Address</label>
+                {{input-field currentHomeStreetAddress class="form-control" placeholder="742 Evergreen Terrace, Apt 1A, Springfield, KS 65801"}}
+              {{/input}}
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-xs-12 col-sm-2 form-group">
+              {{#input currentHomeMovedInOn}}
+                <label>Move-in date</label>
+                {{input-field currentHomeMovedInOn class="form-control" as='date_input'}}
+              {{/input}}
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-xs-12 col-sm-12 col-md-8 form-group">
+              {{#input currentHomeDissatisfactionExplanation}}
+                <label>Reason for leaving</label>
+                {{input-field currentHomeDissatisfactionExplanation class="form-control"}}
+              {{/input}}
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-sm-4 col-md-3 form-group">
+              {{#input currentHomeOwner}}
+                <label>Management's or owner's name</label>
+                {{input-field currentHomeOwner class="form-control" placeholder="A+ Management, LLC"}}
+              {{/input}}
+            </div>
+
+            <div class="col-sm-8 col-md-5 form-group">
+              {{#input currentHomeOwnerContactInfo}}
+                <label>Management's or owner's phone number and/or e-mail address</label>
+                {{input-field currentHomeOwnerContactInfo class="form-control"}}
+              {{/input}}
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="panel panel-default">
+        <div class="panel-heading">
+          <h3 class="panel-title">Previous home</h3>
+        </div>
+
+        <div class="panel-body">
+          <div class="row">
+            <div class="col-xs-12 col-sm-12 col-md-8 form-group">
+              {{#input previousHomeStreetAddress}}
+                <label>Address</label>
+                {{input-field previousHomeStreetAddress class="form-control" placeholder="742 Evergreen Terrace, Apt 1A, Springfield, KS 65801"}}
+              {{/input}}
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-xs-12 col-sm-2 form-group">
+              {{#input previousHomeMovedInOn}}
+                <label>Move-in date</label>
+                {{input-field previousHomeMovedInOn class="form-control" as='date_input'}}
+              {{/input}}
+            </div>
+
+            <div class="col-xs-12 col-sm-2 col-sm-offset-1 form-group">
+              {{#input previousHomeMovedOut}}
+                <label>Move-out date</label>
+                {{input-field previousHomeMovedOut class="form-control" as='date_input'}}
+              {{/input}}
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-xs-12 col-sm-12 col-md-8 form-group">
+              {{#input previousHomeDissatisfactionExplanation}}
+                <label>Reason for leaving</label>
+                {{input-field previousHomeDissatisfactionExplanation class="form-control"}}
+              {{/input}}
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-sm-4 col-md-3 form-group">
+              {{#input previousHomeOwner}}
+                <label>Management's or owner's name</label>
+                {{input-field previousHomeOwner class="form-control" placeholder="A+ Management, LLC"}}
+              {{/input}}
+            </div>
+
+            <div class="col-sm-8 col-md-5 form-group">
+              {{#input previousHomeOwnerContactInfo}}
+                <label>Management's or owner's phone number and/or e-mail address</label>
+                {{input-field previousHomeOwnerContactInfo class="form-control"}}
+              {{/input}}
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="panel panel-primary step3">
+    <div class="panel-heading">
+      <h3 class="panel-title">Employment history</h3>
+    </div>
+
+    <div class="panel-body">
+      <p class="bg-warning text-center">Must submit proof of income 3 times greater than the total monthly rent. If income or credit report requirements are not met, you may require a cosigner.</p>
+      <div class="row">
+        <div class="col-sm-6 col-md-4 form-group">
+          {{#input employmentStatus}}
+            <label>Employment status</label>
+            {{input-field employmentStatus class="form-control" as="select" collection="view.controller.employment_status"}}
+          {{/input}}
+        </div>
+      </div>
+      <div class="panel panel-default">
+        <div class="panel-heading">
+          <h3 class="panel-title">Current employment (if applicable)</h3>
+        </div>
+
+        <div class="panel-body">
+          <div class="row">
+            <div class="col-xs-12 col-sm-6 col-md-4 form-group">
+              {{#input currentEmploymentEmployer}}
+                <label>Employer's name</label>
+                {{input-field currentEmploymentEmployer class="form-control" placeholder="Jon's Sprockets, Inc."}}
+              {{/input}}
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-xs-12 col-sm-2 form-group">
+              {{#input currentEmploymentStartedOn}}
+                <label>Start date</label>
+                {{input-field currentEmploymentStartedOn class="form-control" as='date_input'}}
+              {{/input}}
+              </div>
+          </div>
+          <div class="row">
+            <div class="col-xs-12 col-sm-6 col-md-4 form-group">
+              {{#input currentEmploymentPosition}}
+                <label>Position / Rank</label>
+                {{input-field currentEmploymentPosition class="form-control" placeholder="Assistant to the Regional Manager"}}
+              {{/input}}
+            </div>
+
+            <div class="col-xs-12 col-sm-6 col-md-4 form-group">
+              <label for="input-current-employment-monthly-income">Gross monthly income</label>
+              <div class="input-group">
+                <span class="input-group-addon">$</span>
+                {{#input currentEmploymentMonthlyIncome}}
+                  {{input-field currentEmploymentMonthlyIncome class="form-control"}}
+                {{/input}}
+                <span class="input-group-addon">.00</span>
+              </div>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-xs-12 col-sm-6 col-md-4 form-group">
+              {{#input currentEmploymentEmployerPhoneNumber}}
+                <label>Phone number</label>
+                {{input-field currentEmploymentEmployerPhoneNumber class="form-control" placeholder="785-444-4444"}}
+              {{/input}}
+            </div>
+
+            <div class="col-xs-12 col-sm-6 col-md-4 form-group">
+              {{#input currentEmploymentEmployerEmailAddress}}
+                <label>Character reference contact information (phone number and/or e-mail address)</label>
+                {{input-field currentEmploymentEmployerEmailAddress class="form-control" placeholder="jon@jons-sprockets.com"}}
+              {{/input}}
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-xs-12 col-sm-6 col-md-4 form-group">
+              {{#input currentEmploymentSupervisor}}
+                <label>Supervisor's name</label>
+                {{input-field currentEmploymentSupervisor class="form-control" placeholder="Terrence White"}}
+              {{/input}}
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="panel panel-default">
+        <div class="panel-heading">
+          <h3 class="panel-title">Previous employment (if applicable)</h3>
+        </div>
+
+        <div class="panel-body">
+          <div class="row">
+            <div class="col-xs-12 col-sm-6 col-md-4 form-group">
+              {{#input previousEmploymentEmployer}}
+                <label>Employer's name</label>
+                {{input-field previousEmploymentEmployer class="form-control" placeholder="JJon's Sprockets, Inc."}}
+              {{/input}}
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-xs-12 col-sm-2 form-group">
+              {{#input previousEmploymentStartedOn}}
+                <label>Start date</label>
+                {{input-field previousEmploymentStartedOn class="form-control" as='date_input'}}
+              {{/input}}
+            </div>
+
+            <div class="col-xs-12 col-sm-2 col-sm-offset-2 form-group">
+              {{#input previousEmploymentEndedOn}}
+                <label>End date</label>
+                {{input-field previousEmploymentEndedOn class="form-control" as='date_input'}}
+              {{/input}}
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-xs-12 col-sm-6 col-md-4 form-group">
+              {{#input previousEmploymentPosition}}
+                <label>Position / Rank</label>
+                {{input-field previousEmploymentPosition class="form-control" placeholder="Assistant to the Regional Manager"}}
+              {{/input}}
+            </div>
+
+            <div class="col-xs-12 col-sm-6 col-md-4 form-group">
+              <label for="input-previous-employment-monthly-income">Gross monthly income</label>
+              <div class="input-group">
+                <span class="input-group-addon">$</span>
+                {{#input previousEmploymentMonthlyIncome}}
+                  {{input-field previousEmploymentMonthlyIncome class="form-control"}}
+                {{/input}}
+                <span class="input-group-addon">.00</span>
+              </div>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-xs-12 col-sm-6 col-md-4 form-group">
+              {{#input previousEmploymentEmployerPhoneNumber}}
+                <label>Phone number</label>
+                {{input-field previousEmploymentEmployerPhoneNumber class="form-control" placeholder="785-444-4444"}}
+              {{/input}}
+            </div>
+
+            <div class="col-xs-12 col-sm-6 col-md-4 form-group">
+              {{#input previousEmploymentEmployerEmailAddress}}
+                <label>Email address</label>
+                {{input-field previousEmploymentEmployerEmailAddress class="form-control" placeholder="jon@jons-sprockets.com"}}
+              {{/input}}
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-xs-12 col-sm-6 col-md-4 form-group">
+              {{#input previousEmploymentSupervisor}}
+                <label>Supervisor's name</label>
+                {{input-field previousEmploymentSupervisor class="form-control" placeholder="JTerrence White"}}
+              {{/input}}
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="panel panel-primary step3">
+    <div class="panel-heading">
+      <h3 class="panel-title">Other income (if applicable)</h3>
+    </div>
+
+    <div class="panel-body">
+      <div class="row">
+        <div class="col-xs-12 col-sm-6 col-md-4 form-group">
+          <label for="input-other-income-monthly-amount">Monthly amount</label>
+          <div class="input-group">
+            <span class="input-group-addon">$</span>
+            {{#input otherIncomeMonthlyAmount}}
+              {{input-field otherIncomeMonthlyAmount class="form-control"}}
+            {{/input}}
+            <span class="input-group-addon">.00</span>
+          </div>
+        </div>
+
+        <div class="col-xs-12 col-sm-6 col-md-4 form-group">
+          {{#input otherIncomeSources}}
+            <label>Source(s)</label>
+            {{input-field otherIncomeSources class="form-control"}}
+          {{/input}}
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="panel panel-primary step4">
+    <div class="panel-heading">
+      <h3 class="panel-title">Cosigner information (optional)</h3>
+    </div>
+
+    <div class="panel-body">
+      <div class="row">
+        <div class="col-xs-12 haracter_referencecol-sm-6 col-md-4 form-group">
+          {{#input cosignerName}}
+            <label>Full Name</label>
+            {{input-field cosignerName class="form-control" placeholder="Ron Miller"}}
+          {{/input}}
+        </div>
+        <div class="col-xs-12 col-sm-6 col-md-4 form-group">
+          {{#input cosignerEmailAddress}}
+            <label>Email address</label>
+            {{input-field cosignerEmailAddress class="form-control" placeholder="ron@millerfamily.com"}}
+          {{/input}}
+        </div>
+      </div>
+      <div class="row">
+      <div class="col-xs-12 col-sm-12 col-md-12 form-group">
+	  
+		<div class="btn-group" data-toggle="buttons">
+		  <label class="btn btn-default">
+				  <input type="checkbox" autocomplete="off" /> Forward invoice to Co-Signer
+		  </label>  
+		</div>	
+	  
+      </div>
+      </div>
+    </div>
+  </div>
+  <div class="panel panel-warning step4">
+    <div class="panel-heading">
+      <h3 class="panel-title">Information release and acceptance of terms and conditions</h3>
+    </div>
+
+    <div class="panel-body">
+      <p>By submitting this Tenant Application, I hereby authorize RentalGeek, Inc. to release any information regarding my residency at the following address: <strong><span class="autorendered-current-home-street-address bg-warning">[none yet entered]</span></strong>.</p>
+
+      <p>Furthermore, by submitting this application I also indicate that I accept Rental Geek's <a href="/pdfs/Terms-Of-Service-19-03-2014.pdf" target="_newtab">Terms of Service</a>.</p>
+    </div>
+  </div>
+  <input id="step1" class="btn btn-primary btn-lg active" type="button" value="Next" />
+  <input id="back2" class="btn btn-primary btn-lg" type="button" value="Back" />
+  <input id="step2" class="btn btn-primary btn-lg" type="button" value="Next" />
+  <input id="back3" class="btn btn-primary btn-lg" type="button" value="Back" />
+  <input id="step3" class="btn btn-primary btn-lg" type="button" value="Next" />
+  <input id="back4" class="btn btn-primary btn-lg" type="button" value="Back" />
+  <input id="button-application-submit" class="btn btn-primary btn-lg" type="submit" value="Submit Tenant Application" {{action "update" content}}>
+
+  <div class="panel panel-danger" id="applicant-registration-error-messages-container"  style="margin-top: 1em; display: none;"></div>
+  <div class="panel panel-success" id="applicant-registration-success-message-container" style="margin-top: 1em; display: none;">GREAT SUCCESS</div>
+{{/form-for}}
+

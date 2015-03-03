@@ -1,0 +1,40 @@
+{{#my-modal title="Property Photo upload" ok='save' close='closeModal'}}
+<h2>Property Photos</h2>
+ <div class="panel panel-primary pure-u-1">
+  <div class="panel-heading">
+      <h3 class="panel-title">Update Property Photos</h3>
+    </div>
+    <div class="panel-body">
+      <div>
+       <div class="row">
+        <!--product images gallery start-->
+          <div class="col-md-6">
+            <div class="slider slider-nav">
+            </div>
+          </div>
+        </div>
+        <form class="pure-form row" {{action 'uploadFile' content on='submit'}} enctype="multipart/form-data" id="myForm">
+      <fieldset>
+      <div class="col-xs-12 col-sm-3 col-md-2 col-lg-2 uploadfile-title" id="legend">
+          <strong>Select Multiple Images: </strong>
+          <div class="alert hidden" id="alert-message"></div>
+      </div>
+      <div class="control-group col-xs-12 col-sm-4 col-md-3 col-lg-3">
+          <!-- File Upload -->
+          <div class="controls">
+              <input type="hidden" name="rental_offering_id" value="{{unbound model.id}} ">
+           <input id="photo" class="input-file add-photo-link" multiple="multiple" name="property_photo[photo][]" type="file">
+          </div>
+      </div>
+      <div class="control-group col-xs-12 col-sm-3 col-md-3 col-lg-2">
+          <!-- Button -->
+          <div class="controls">
+            <button class="button-xlarge pure-button pure-button-primary">Upload</button>
+          </div>
+      </div>
+    </fieldset>
+     </form>
+    </div>
+  </div>
+</div>
+{{/my-modal}}

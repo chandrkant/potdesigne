@@ -1,0 +1,41 @@
+{{#if successTransaction}}
+<div class="alert alert-success">
+  <button type="button" class="close" data-dismiss="alert">&times;</button>
+  <h4>Success! {{successTransaction}}</h4>
+</div>
+{{/if}}
+{{#if errorMessage}}
+{{#each errorMessage}}
+<div class="alert alert-error"> {{unbound message}} </div>
+{{/each}}
+{{/if}}
+<section class="credit-card gr-visa">
+  <div class="logo">Visa</div>
+  <form  {{action 'brainTreeAction' on="submit"}}  id="transaction_form">
+    <h2>Payment Details</h2>
+    <div>
+      <ul class="inputs">
+        <li>
+          <label>Card Number</label>
+          <input type="text" size="20" name="card_no" class="full gr-input" required pattern="[0-9]{13,16}" autocomplete="off" placeholder="9842 9472 9457 9472" data-encrypted-name="number" id="card_no" />
+        </li>
+        <li class="expire last">
+          <label>Expiration (MM/YYYY)</label>
+          <input type="text" size="10"  placeholder="December (12)" class="month gr-input" required data-encrypted-name="month" id="mm"/> <input type="text" size="10" placeholder="2014" class="year gr-input" required data-encrypted-name="year" id="yyyy" />
+          <div class="clearfix"></div>
+        </li>
+        <li class="cvc-code last">
+          <label>CVV</label>
+          <input type="text" size="10" class="gr-input" placeholder="174"  required autocomplete="off" data-encrypted-name="cvv" id="cvv" /> 
+        </li>
+        <div class="clearfix"></div>
+      </ul>
+    </div>
+    {{#if session.applicant.payment}}
+    <button  type="submit" id="submit" class="btn-small btn btn-success" disabled>Pay $20.00 </button>
+    {{else}}
+    <button  type="submit" id="submit" class="btn-small btn btn-success">Pay $20.00 </button>
+    {{/if}}
+  </form>
+  <div class="watermark">Visa</div>
+</section>

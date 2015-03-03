@@ -1,0 +1,67 @@
+<div class="container">
+
+  <div id="status">
+  </div>
+<div class="row">
+  <h1 class="hero-statement text-center">Come on in.</h1>
+  <div class="col-xs-12 col-sm-6 col-sm-offset-3 border-block">
+    <!--<div class="login-card">-->
+      {{#if authErrorMessage}}
+      <div class="alert alert-error"> {{unbound authErrorMessage}} </div>
+      {{/if}}
+
+      <div class="account-wall">
+        <span class="auth_error" id="auth_message_e">{{auth_error_message}}</span>
+          {{#form-for model class="form-horizontal login_form pure-form"}}
+            {{#input identification}}
+              <label class="control-label" for="validate-email">Email</label>
+              <div class="pass-div" data-validate="email">
+                {{input-field identification name="identification" value = identification class="form-control no-border-radius"}}
+                <span class="input-group-addon email-span danger no-border-radius"> {{partial 'email-11'}} </span>
+              </div>
+              <div id="email_error" class="login_error"></div>
+            {{/input}}
+            {{#input password}}
+              <label class="control-label" for="validate-text">Password</label>
+              <div class="pass-div">
+                {{input-field password name="password" value = password class="password form-control no-border-radius"}}
+                <span class="input-group-addon danger lock-span no-border-radius"> {{partial 'lock-icon'}} </span>
+              </div>
+              <div id="password_error" class="login_error"></div>
+            {{/input}}
+            <div class="row form-actions">
+		
+			<div class="col-xs-6 col-sm-6">
+              <button class="btn btn-primary pure-u-1" {{action 'authenticate' }}type="submit">Sign in</button>
+			  </div>
+			<div class="col-xs-6 col-sm-6">
+			  {{#link-to 'sign-up'  class="btn btn-default pure-u-1"}}<span id="signup">Sign Up</span>{{/link-to}}
+			  </div>
+			
+			</div>
+          {{/form-for}}
+        <div class="form-group input-group social-logins">
+          {{#if hasFacebook}}
+            {{partial "comment-form"}}
+          {{else}}
+            Sign in with
+            <a {{action 'checkLoginState' }} >
+              Facebook
+            </a>
+            or
+            <a {{action 'googleSignIn' }} >
+              Google+
+            </a>
+          {{/if}}
+          {{!-- <label class="label-control">Remember Me</label> | {{#link-to "password_reset"  class="btn "}}Forgot you password?{{/link-to}} --}}
+        </div>
+        <div class="center">
+         {{#link-to "password_reset"}}Forgot Password?{{/link-to}}
+        </div>
+      </div>
+      {{!-- {{#link-to "register"  class="text-center new-account"}}Create an account{{/link-to}} --}}
+    </div>
+  <!--</div>-->
+</div>
+</div>
+

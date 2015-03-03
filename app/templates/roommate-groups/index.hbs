@@ -1,0 +1,105 @@
+{{#if successMessage}}
+  <div class="alert alert-success">
+    <button type="button" class="close" data-dismiss="alert">&times;</button>
+    <h4>{{successMessage}}</h4>
+  </div>
+{{/if}}
+{{#if errorMessage}}
+    <div class="alert alert-error"> {{unbound errorMessage}} </div>
+{{/if}}
+<div class="container">
+
+<h1 class="hero-statement">Create Roommate Group</h1>  
+
+  <div class="border-block">
+  <div class="row">
+  <form class="pure-form col-xs-12 col-sm-6 roommate-group-form" role="form" autocomplete="off" {{action "create" user on="submit"}}>
+            <fieldset>
+              <div class="form-group multiple-form-group" data-max=10>
+                <div class="form-group">
+                  <input type="text" name="multiple[]" class="form-control r_g_name" placeholder="Enter Group Name">
+                </div>
+              </div>
+            </fieldset>
+			
+			<div class="row">
+			<div class="col-xs-12 col-md-6 col-sm-6">
+            <button type="submit" class="btn pure-input-1 btn-primary">Create</button>
+			</div>
+			<div class="col-xs-12 col-md-6 col-sm-6">
+            {{#link-to 'invitations.index' class="btn btn-default pure-input-1"}} <span class="badge">4</span> &nbsp; Invitation{{/link-to}}
+			</div>
+			</div>
+      </form>
+</div></div>
+
+<div class="border-block">
+  <div class="row">
+    <div class="col-md-6">
+      <h3>Your own Groups</h3>
+   	  <table class="table table-striped table-hover table-bordered">
+		    <thead>
+          <tr>
+            <th>Name</th>
+            <th>Action</th>
+          </tr>
+        </thead>
+        <tbody>
+          {{#if groups.length }}
+            {{#each groups}}
+              <tr>
+                <td>
+                  <a href="javascript:void(0);" class="name"
+                  data-url="https://fonda.herokuapp.com/v2/roommate_groups/{{ unbound id}}" >{{name}}</a>
+                </td>
+                <td>
+                  {{#link-to 'roommate-groups.show' id}}show{{/link-to}}
+                </td>
+              </tr>
+            {{/each}}
+          {{else}}
+            <tr>
+                <td colspan="2">
+                  <p><center>You are not created any Group yet.</center></p>
+              </td>
+              </tr>
+          {{/if}}
+		    </tbody>
+	    </table>
+    </div>
+    <div class="col-md-6">
+      <h3>Groups in which you are member</h3>
+      <table class="table table-striped table-hover table-bordered">
+        <thead>
+          <tr>
+            <th>Name</th>
+            <th>Action</th>
+          </tr>
+        </thead>
+        <tbody>
+          {{#if members }}
+            {{#each members}}
+              <tr>
+                <td>
+                  <p>{{name}}</p>
+                </td>
+                <td>
+                  <button class="btn btn-primary" {{action 'left_group' id}}>Leave Group</button>
+                </td>
+              </tr>
+            {{/each}}
+          {{else}}
+            <tr>
+                <td colspan="2">
+                  <p><center>You are not the member of any Group yet.</center></p>
+              </td>
+              </tr>
+          {{/if}}
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>
+
+
+</div>

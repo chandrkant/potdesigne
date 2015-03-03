@@ -1,0 +1,41 @@
+{{#my-modal title="Attachments" ok='save' close='closeModal'}}
+<div>
+  <form enctype="multipart/form-data" novalidate="novalidate" id="fileUpload" {{action 'uploadFile' content on="submit"}} class="form-horizontal wpc_contact pure-form" data-ember-action="1"  method="POST">
+    {{#if errorMessage}}
+    <div class="alert alert-error">
+    <button type="button" class="close"  data-dismiss="alert">&times;</button>
+        {{errorMessage}}
+    </div>
+  {{/if}}
+
+  {{#if successMessage}}
+    <div class="alert alert-success">
+      <button type="button" class="close"  data-dismiss="alert">&times;</button>
+        <h4>{{successMessage}}</h4>
+    </div>
+  {{/if}}
+    <fieldset>
+      <div class="col-xs-12 col-sm-3 col-md-2 col-lg-2 uploadfile-title" id="legend">
+          <strong>Upload Your file: </strong>
+          <div class="alert hidden" id="alert-message"></div>
+      </div>
+      <div class="control-group col-xs-12 col-sm-4 col-md-3 col-lg-3">
+          <!-- File Upload -->
+          <div class="controls">
+              <input type="file" name="attachment[attachment]" id="fileInput" class="input-file">
+          </div>
+      </div>
+      <div class="control-group col-xs-12 col-sm-3 col-md-3 col-lg-2">
+          <!-- Button -->
+          <div class="controls">
+            <button class="button-xlarge pure-button pure-button-primary">Upload</button>
+          </div>
+      </div>
+    </fieldset>
+  </form>
+</div>
+{{log model}}
+{{#each model}}
+<iframe src="https://docs.google.com/viewer?url={{unbound attachment}}&embedded=true"></iframe>
+{{/each}}
+{{/my-modal}}

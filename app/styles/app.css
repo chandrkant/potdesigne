@@ -1,0 +1,545 @@
+@import url(https://fonts.googleapis.com/css?family=Roboto:400,300italic,300,100italic,100,400italic,500,500italic,700,700italic,900,900italic);
+/* font-family: 'Roboto', sans-serif; */
+@import url(https://fonts.googleapis.com/css?family=Roboto+Condensed:300italic,400italic,700italic,400,300,700);
+/* font-family: 'Roboto Condensed', sans-serif; */
+/* SHARED */
+
+::-moz-selection{background:#5af;color:#fff;text-shadow:none}
+::selection{background:#5af;color:#fff;text-shadow:none}
+::-webkit-scrollbar{
+  width:13px;
+  background:#fcfcfc;
+}
+::-webkit-scrollbar-track{-webkit-box-shadow:inset 0 0 6px rgba(0,0,0,0.2)}
+::-webkit-scrollbar-thumb{
+  background:rgba(102,51,0,0.2) url(https://googledrive.com/host/0B9LVk4xbDIJTU0FvQll6RWlCNnM/ticks.png);
+  -webkit-box-shadow:inset 0 0 6px rgba(0,0,0,0.2);
+}
+::-webkit-scrollbar-thumb:window-inactive{background:rgba(216,210,206,0.3)}
+
+body{
+  color: #00254B;
+  font-family: 'Roboto', sans-serif;
+}
+.img-polaroid {
+    background-color: #fff;
+    border: 1px solid rgba(0, 0, 0, 0.2);
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+    padding: 4px;
+}
+.hero-statement{
+  font-size: 44px;
+}
+
+.slogan{
+  font-size: 21px;
+  margin:111px auto 33px 7px;
+  text-align: center;
+}
+
+.cosigner_emails{
+  background: #fff !important;
+}
+  .cosigner-checkbox-div{
+    float:right;
+  }
+    .cosigner-checkbox{
+      float: right;
+      margin: 4px 7px;
+    }
+
+.right{
+  float: right;
+}
+.alert-danger, .alert-error {
+color: #b94a48;
+background-color: #f2dede;
+border-color: #eed3d7;
+}
+
+nav{
+  position: fixed;
+  background: #fff;
+  z-index: 1;
+}
+  nav a, a{
+    color: #06C;
+  }
+  nav a:hover, a:hover{
+    color: #06C;
+  }
+  nav a{
+    font-weight: bold;
+  }
+  nav li{
+    padding: 0 33px;
+    display: inline-block;
+  }
+  nav ul{
+    float: right;
+    margin: 23px 0 0 0;
+  }
+  .top-nav-wrapper{
+    margin: 12px 0px 0px;
+  }
+
+main{
+  padding: 0 13px;
+}
+  main, .main-content, nav{
+    max-width: 1280px;
+    margin: auto;
+  }
+  .main-content{
+    margin: 111px auto 33px;
+    padding: 33px 14px;
+  }
+  .navbar-collapse{
+    padding: 0;
+  }
+
+.btn, .input-group-addon{
+  transition: 0.33s;
+}
+  .btn:hover{
+    box-shadow: 1px 3px 7px rgba(0, 0, 0, 0.25);
+  }
+  .btn-warning a{
+    color: #fff;
+  }
+  .btn-warning a:hover{
+    color: #fff;
+    text-decoration: none;
+  }
+  .btn-facebook{
+    background: rgb(61, 61, 194);
+  }
+  .btn-google{
+    background: red;
+  }
+
+.input-group-addon{
+  position: absolute;
+  background: transparent;
+  border: 0;
+  right: 0;
+  width: 41px;
+  display: block;
+  opacity: 0;
+  z-index: -1;
+}
+  .form-control{
+    background: transparent;
+  }
+  #validate-email{
+    z-index: 0;
+    width: 218px;
+  }
+  .pass-div{
+    margin: 0 0 13px;
+  }
+
+.login-card{
+  transition: 0.33s;
+  box-shadow: 3px 3px 13px rgba(10, 26, 66, 0.58);
+  padding: 81px;
+}
+  .card-down{
+    border: 1px solid #F1F1F1;
+    box-shadow: 3px 3px 13px rgba(10, 26, 66, 0);
+  }
+  .social-logins{
+    text-align: center;
+    margin: 13px auto 7px;
+  }
+  .form-horizontal .form-group{
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+.center{
+  text-align: center;
+  margin: auto;
+}
+.paperless-form{
+  margin: 177px auto 0px;
+}
+
+.email-11, .lock-18{
+  width: 17px;
+  margin: 2px auto -2px;
+  fill: #3C74BD;
+}
+
+.no-border-radius{
+  border-radius: 0;
+}
+
+.opacity-1{
+  opacity: 1;
+}
+  .opacity-0{
+    opacity: 0;
+  }
+
+.home-alert{
+  position: fixed;
+  top: 37%;
+  width:73%;
+  z-index: 300;
+  left: 0;
+  right: 0;
+  margin: 0 auto;
+}
+
+.logo .logo-part-1 {
+  color: #000;
+}
+
+.logo .logo-part-2 {
+  color: #06C;
+  font-weight: bold;
+}
+
+a.logo, a.logo span {
+  text-decoration:none;
+}
+
+.logo .logo-trademark-symbol {
+  top: -0.3em;
+  left: -0.2em;
+  position: relative;
+
+  color: #888;
+  font-size: 80%;
+}
+
+footer{
+  margin: 111px auto 0px;
+}
+  footer div.legal {
+    margin-top: 1em;
+    padding: 2.5em;
+    opacity: 0.9;
+    background-color: rgba(255, 255, 255, 0.4);
+  }
+  .footer-content{
+    text-align: center;
+    width: 100%;
+    padding: 177px 0px 0px;
+  }
+
+body.nice-background footer div.legal {
+  background-color: white;
+  opacity: 0.7;
+}
+
+/* SEARCH FORM PAGE */
+
+.nice-background {
+  background: url("../images/rsz_buccleuch_cottages_beaulieu_new_forest.jpg") center 0px repeat-x;
+}
+  span.nice-background{
+    position: absolute;
+    top: 0;
+    left: 0;
+  }
+
+#search-form-container {
+  background: #fff;
+  padding: 15px 50px 50px 50px;
+  opacity: 0.9;
+  margin-top: 23px;
+  border-radius: 7px;
+  min-width: 418px;
+  /* box-shadow: 3px 3px 13px rgba(27, 32, 37, 0.81); */
+}
+
+#search-form-container p,
+#search-form-container label {
+  font-weight: bold;
+  font-size: 18px;
+  font-size: 28px;
+  line-height: 17px;
+  color: #00254B;
+  text-align: left;
+}
+
+/* RESULTS PAGE */
+
+#map-canvas {
+  background-color: #ACA;
+  height: 40em;
+}
+
+#list-and-map #table-container {
+  min-height: 40em;
+}
+
+#list-and-map .rental-offering-attribute {
+  text-align: center;
+}
+
+#list-and-map .rental-offering-attribute-name {
+  text-transform: uppercase;
+    text-align: center;
+}
+
+.rental-cost{
+  margin: 0 17px;
+}
+
+#list-and-map .monthly-rent {
+  text-align: left;
+}
+
+#list-and-map .bedroom-count {
+  text-transform: uppercase;
+}
+
+#map-canvas > div > div:nth-child(1) > div > div:nth-child(3) > div:nth-child(3) > div {
+  opacity: 0.8;
+}
+
+/* query.nav-justified > li {display: table-cell;} */
+
+@media (max-width: 768px) {
+  .hero-statement{font-size: 33px;}
+  .login-card{ width: 100%; }
+}
+
+/* END: RESULTS PAGE */
+
+/* NAV */
+
+.navbar-inverse .navbar-collapse, .navbar-inverse{
+  background: transparent;
+  border: 0;
+}
+.loder{
+    display: none;
+    left: 41%;
+    margin-left: -32px;
+    margin-top: -32px;
+    position: fixed;
+    top: 33%;
+    z-index: 10001;
+}
+.alert-danger, .alert-error {
+    background-color: #f2dede;
+    border-color: #eed3d7;
+    color: #b94a48;
+}
+.alert {
+    /*background-color: #fcf8e3;*/
+    border: 1px solid #fbeed5;
+    border-radius: 4px;
+    margin-bottom: 20px;
+    padding: 8px 35px 8px 14px;
+    text-shadow: 0 1px 0 rgba(255, 255, 255, 0.5);
+}
+.clearfix {
+    clear:both;
+}
+/* === Basic reset === */
+* { margin: 0; padding: 0; outline: none; box-sizing:border-box; }
+a>img { border: none; }
+header, footer, article, section, nav, aside { display: block; }
+/* === Credit Card === */
+.credit-card {
+    display:block;
+    position:relative;
+    width:93.75%;   /* This is 300px on 320px wide screen */
+    max-width:500px;    /* Just to make sure that it doesnt get crazy on bg screens */
+    min-width:300px;    /* And make sure that it contains at least some size */
+    margin:30px auto;
+    padding:20px;
+    overflow:hidden;
+    border-radius:6px;
+    z-index:1;
+}
+
+.credit-card .inputs {
+    list-style:none;
+    margin-top:30px;
+}
+
+.credit-card .inputs li {
+    margin-bottom:30px;
+}
+
+.credit-card .inputs li.last {
+    margin-bottom:10px;
+}
+
+.credit-card .inputs li.expire {
+    float:left;
+    width:70%;
+    margin-right:5%;
+}
+
+.credit-card .inputs li.expire input{
+    float:left;
+    width:35%;
+}
+
+.credit-card .inputs li.expire input.month{
+    width:60%;
+    margin-right:5%;
+}
+
+.credit-card .inputs li.cvc-code {
+    float:left;
+    width:25%;
+}
+
+.credit-card .inputs li.cvc-code input {
+    width:100%;
+}
+
+.credit-card .watermark {
+    position:absolute;
+    z-index:10;
+}
+
+.credit-card form {
+    position:relative;
+    z-index:50;
+
+}
+
+.credit-card .logo {
+    position:absolute;
+    top:15px;
+    right:20px;
+    text-transform:uppercase;
+    font-weight:bold;
+}
+/* === Visa === */
+.visa {
+    color:#fff;
+    box-shadow: 0px 0px 4px rgba(0,0,0,0.8), inset 0px 1px 3px rgba(255,255,255,0.3), inset 0px 0px 2px rgba(255,255,255,0.2);
+}
+
+.visa h2 {
+    text-shadow:1px 1px 2px rgba(17,121,173,0.8);
+}
+
+.visa .logo {
+    color:rgba(255,255,255,0.9);
+    font-size:2em;
+    font-style:italic;
+    text-shadow:0px 0px 3px rgba(17,123,173,0.9);
+}
+
+.visa .logo:after {
+    content:' ';
+    position:absolute;
+    left:0px;
+    top:5px;
+    width: 0;
+    height: 0;
+    border-top: 10px solid orange;
+    border-left: 10px solid transparent;
+}
+
+.visa .watermark {
+    bottom:-100px;
+    left:-50px;
+    color:rgba(255,255,255,0.06);
+    font-size:20em;
+    font-weight:bold;
+    font-style:italic;
+}
+/* === Forms === */
+.credit-card label {
+    display:block;
+    margin-bottom:8px;
+    color:rgba(255,255,255,0.6);
+    text-transform:uppercase;
+    font-size:1.1em;
+    font-weight:bold;
+    text-shadow:0px 1px 2px rgba(17,123,173,0.6);
+}
+
+.credit-card input {
+    display:block;
+    padding:12px 10px;
+    color:#999;
+    font-size:1.2em;
+    font-weight:bold;
+    text-shadow:1px  1px 1px #fff;
+    border:1px solid rgba(16,103,133,0.6);
+    box-shadow:0px 0px 3px rgba(255,255,255,0.5), inset 0px 1px 4px rgba(0,0,0,0.2);
+    border-radius:3px;
+}
+
+input.full {
+    width:100%;
+}
+
+
+/* === Gradients === */
+.gr-visa {
+    background: #1db1cf; /* Old browsers */
+    background: -moz-linear-gradient(top,  #1db1cf 0%, #1078ab 100%); /* FF3.6+ */
+    background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#1db1cf), color-stop(100%,#1078ab)); /* Chrome,Safari4+ */
+    background: -webkit-linear-gradient(top,  #1db1cf 0%,#1078ab 100%); /* Chrome10+,Safari5.1+ */
+    background: -o-linear-gradient(top,  #1db1cf 0%,#1078ab 100%); /* Opera 11.10+ */
+    background: -ms-linear-gradient(top,  #1db1cf 0%,#1078ab 100%); /* IE10+ */
+    background: linear-gradient(to bottom,  #1db1cf 0%,#1078ab 100%); /* W3C */
+    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#1db1cf', endColorstr='#1078ab',GradientType=0 ); /* IE6-9 */
+}
+.gr-input {
+    background: #d3d3d3; /* Old browsers */
+    background: -moz-linear-gradient(top,  #d3d3d3 0%, #d9d9d9 38%, #e5e5e5 82%, #e7e7e7 100%); /* FF3.6+ */
+    background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#d3d3d3), color-stop(38%,#d9d9d9), color-stop(82%,#e5e5e5), color-stop(100%,#e7e7e7)); /* Chrome,Safari4+ */
+    background: -webkit-linear-gradient(top,  #d3d3d3 0%,#d9d9d9 38%,#e5e5e5 82%,#e7e7e7 100%); /* Chrome10+,Safari5.1+ */
+    background: -o-linear-gradient(top,  #d3d3d3 0%,#d9d9d9 38%,#e5e5e5 82%,#e7e7e7 100%); /* Opera 11.10+ */
+    background: -ms-linear-gradient(top,  #d3d3d3 0%,#d9d9d9 38%,#e5e5e5 82%,#e7e7e7 100%); /* IE10+ */
+    background: linear-gradient(to bottom,  #d3d3d3 0%,#d9d9d9 38%,#e5e5e5 82%,#e7e7e7 100%); /* W3C */
+    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#d3d3d3', endColorstr='#e7e7e7',GradientType=0 ); /* IE6-9 */
+}
+#firechat-wrapper {
+  height: 475px;
+  max-width: 325px;
+  padding: 10px;
+  border: 1px solid #ccc;
+  background-color: #fff;
+  margin: 50px auto;
+  text-align: center;
+  -webkit-border-radius: 4px;
+  -moz-border-radius: 4px;
+  border-radius: 4px;
+  -webkit-box-shadow: 0 5px 25px #666;
+  -moz-box-shadow: 0 5px 25px #666;
+  box-shadow: 0 5px 25px #666;
+}
+
+.modal-dialog {
+    /* new custom width */
+    width: 1200px;
+}
+
+.slick-prev:before, .slick-next:before { font-family: "slick"; font-size: 20px; line-height: 1; color: black; opacity: 0.75; -webkit-font-smoothing: antialiased; -moz-osx-font-smoothing: grayscale; }
+
+/* Tenant Easy Form */
+.right-signature{
+  display: block;
+  padding: 0;
+  border: 0;
+  outline: 0;
+  font-size: 10px !important;
+  color: #AAA !important;
+  vertical-align: baseline;
+  background: transparent;
+  width: 706px;
+  text-align: center;
+  margin: 111px auto;
+}
+.ml-35{
+  margin-left:35px;
+}
+.login_form .form-group{
+  margin-bottom:0px;
+}

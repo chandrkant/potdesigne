@@ -1,0 +1,81 @@
+<form class="pure-form cosigner-form col-xs-12 col-sm-6 col-sm-offset-3" role="form" autocomplete="off" {{action "invite" model.id on="submit"}}>
+  {{#if errorMessage}}
+    <div class="alert alert-error"> 
+    <button type="button" class="close"  data-dismiss="alert">&times;</button>
+        {{errorMessage}}
+    </div>
+  {{/if}}
+
+  {{#if successMessage}}
+    <div class="alert alert-success">
+      <button type="button" class="close"  data-dismiss="alert">&times;</button>
+        <h4>{{successMessage}}</h4>
+    </div>
+  {{/if}}
+  <h3>Invite Co-Signer</h3>
+  <fieldset>
+    <div class="border-block">
+      <div class="panel-body">
+        <div class="form-group multiple-form-group" data-max=10>
+          <input type="email" name="multiple[]" class="form-control cosigner_emails" placeholder="Co-Signer Email address"/> 
+            <button type="submit" class="pure-button pure-input-1 pure-button-primary">Invite Co-Signer</button>
+            <span class="input-group-btn">
+              <button style="display:none" type="button" class="btn btn-default btn-add">
+              </button>
+            </span>
+        </div>
+
+        <div id="property-listings" >
+          <!-- Begin Listing: 609 W GRAVERS LN-->
+          {{#each model}}
+          <div class="pure-form">
+            <div class="brdr bgc-fff pad-10 box-shad btm-mrg-20 property-listing">
+              {{#if soldOut}}
+                <div style="float:right">
+                  <button style = "cursor:auto" class="pure-button pure-button-error" type="button">Sold Out </button>
+                </div>
+              {{else}}
+              <div class="cosigner-checkbox-div">
+                <sub>Co-Signer:</sub> <input type="checkbox" id={{unbound id}} class="checkbox cosigner-checkbox" name="type" value={{unbound propertyRentalgeekId}}>
+              </div>
+              {{/if}}
+              <div class="media">
+                <a target="_parent" href="#" class="pull-left item-image">
+                  {{#if image}}
+                    <img src="{{unbound image}}" class="img-responsive" alt="image">
+                  {{else}}
+                    <img src="/assets/images/slider1.jpg" class="img-responsive" alt="image">
+                  {{/if}}
+                </a>
+                <div class="clearfix visible-xs"></div>
+                <div class="media-body fnt-smaller">
+                  <a target="_parent" href="#"></a>
+                  <h2 class="media-heading">
+                    <a target="_parent" href="#">{{propertyAddress}}<small class="pull-right price">${{monthlyRentFloor}}</small></a>
+                  </h2>
+                  <ul class="list-inline mrg-0 btm-mrg-10 clr-535353">
+                    {{#if squareFootageFloor}}
+                      <li>{{squareFootageFloor}} SqFt</li>
+                      <li style="list-style: none">|</li>
+                    {{/if}}
+                    <li>{{bedroomCount}} Beds</li>
+                    <li style="list-style: none">|</li>
+                    <li>{{fullBathroomCount}} Baths</li>
+                  </ul>
+                  <p class="hidden-xs">{{salesyDescription}}</p>
+                  <span class="fnt-smaller fnt-lighter fnt-arial">
+                  Courtesy of HS Fox &amp; Roach-Chestnut Hill Evergreen</span>
+                </div>
+              </div>
+            </div>
+          </div> <!-- .pure-form -->
+          {{/each}}
+          <!-- End Listing-->
+          {{#unless model}}
+            <p><center> You haven't applied for any properties yet. </center></p>
+          {{/unless}}
+        </div> <!-- .property-listings end -->
+      </div> <!-- .panel-body end -->
+    </div> <!-- .border-block end -->
+  </fieldset>
+</form>

@@ -1,0 +1,74 @@
+<div class="container">
+ 
+  <div id="status">
+  </div>
+<div class="row">
+<h1 class="hero-statement text-center">Sign on up.</h1>
+  <div class="col-xs-12 col-sm-6 col-sm-offset-3 border-block">
+    <!--<div class="login-card">-->
+      {{#if authErrorMessage}}
+        <div class="alert alert-error"> {{unbound authErrorMessage}} </div>
+      {{/if}}
+
+      <div class="account-wall">
+        <span class="auth_error" id="auth_message_e">{{auth_error_message}}</span>
+
+        <form {{action "registration" user on="submit"}} class="form-horizontal pure-form" id="applicant-registration-form">
+         
+           <label class="form-group control-label" for="validate-email">Email</label>
+					<div class="pass-div" data-validate="email">
+						<input type="text" class="form-control no-border-radius" name="applicant[email]" id="validate-email" required>
+						<span class="input-group-addon email-span danger no-border-radius"> {{partial 'email-11'}} </span>
+					</div>
+          <div id="email_error" class="login_error"></div>
+
+        <label class="control-label form-group" for="validate-text">Password</label>
+					<div class="pass-div">
+						<input type="password" class="password form-control no-border-radius" name="applicant[password]" id="validate-password" required>
+						<span class="input-group-addon danger lock-span no-border-radius"> {{partial 'lock-icon'}} </span>
+					</div>
+          <div id="password_error" class="login_error"></div>
+
+        <label class="control-label form-group" for="validate-text"> Confirm Password</label>
+          <div class="pass-div">
+            <input type="password" class="password form-control no-border-radius" name="applicant[password_confirmation]" id="validate-password" required>
+
+            <span class="input-group-addon danger lock-span no-border-radius"> {{partial 'lock-icon'}} </span>
+          </div>
+          <div id="password_error" class="login_error"></div>
+        
+        <div class="form-actions">
+          <button type="submit" class="btn btn-primary pure-u-1" value="Sign-up" >
+          {{!-- <button type="submit" class="btn btn-primary pure-u-1" value="Login" {{action "registration"}}> --}}
+            Sign Up
+          </button>
+        </div>
+        <div class="panel panel-danger" id="applicant-registration-error-messages-container"  style="margin-top: 1em; display: none;"></div>
+
+        <div class="form-group input-group social-logins">
+          
+          {{#if hasFacebook}}
+          {{partial "comment-form"}}
+          {{else}}
+
+          Sign up with
+          <a {{action 'checkLoginState' }} >
+            Facebook
+          </a>
+          or
+          <a {{action 'googleSignIn' }} >
+            Google+
+          </a>
+          {{/if}}
+          {{!-- <label class="label-control">Remember Me</label> | {{#link-to "password_reset"  class="btn "}}Forgot you password?{{/link-to}} --}}
+          </div>
+
+        </form>
+        
+      </div>
+      {{!-- {{#link-to "register"  class="text-center new-account"}}Create an account{{/link-to}} --}}
+    <!--</div>-->
+  </div>
+</div>
+</div>
+

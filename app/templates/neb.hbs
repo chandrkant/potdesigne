@@ -1,0 +1,50 @@
+<nav class="container-fluid header-nav" role="navigation">
+   <div class="container">
+      <div class="row">
+         {{!-- {{#link-to 'index'}} Home {{/link-to}} --}}
+         <!-- Brand and toggle get grouped for better mobile display -->
+         <button type="button" class="navbar-toggle collapsed btn btn-primary" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+            <span class="sr-only">Toggle navigation</span>
+            <span class="icon-bar before"></span>
+            <span class="icon-bar middle"></span>
+            <span class="icon-bar after"></span>
+         </button>
+         <div class="navbar-header">
+            {{partial 'logo'}}
+         </div>
+         <!-- Collect the nav links, forms, and other content for toggling -->
+         <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+            <div class="top-nav-wrapper">
+               <ul class="top-nav">
+                  <!--<li><a href="#">Post Your Listing</a></li>-->
+               </ul>
+               <ul class="top-nav2">
+                  {{!-- <li><a href="#">Blog</a></li>
+                  <li><a href="#">About Us</a></li> --}}
+                  <!--<li><a href="#">Jobs</a></li>-->
+                  <li>{{#link-to 'search-map' 'city'}}Search{{/link-to}}</li>
+                  {{#if session.isAuthenticated}}
+                     {{#if session.applicant.property_manager_id}}
+
+                        <li>{{#link-to 'rental-offerings.index'}}Rental Offering{{/link-to}}</li>
+                     {{/if}}
+                     <li>{{#link-to 'roommate-groups.index'}}Roommates{{/link-to}}</li>
+                     <li>{{#link-to 'applicants.edit' session.applicant.id}}{{session.applicant.email}}{{/link-to}}</li>
+                     <li class="notification-alert">
+                        {{partial 'bell'}}
+                        <a {{ action 'invalidateSession' }} >Sign Out</a>
+                     </li>
+                  {{else}}
+                     <li class="last">{{#link-to 'login'}}<span id="signin">Sign In</span>{{/link-to}}</li>
+                     <!--<li>
+                        {{#link-to 'sign-up'}}<span id="signup">Sign Up</span>{{/link-to}}
+                     </li>-->
+                  {{/if}}
+
+               </ul>
+            </div>
+         </div>
+         <!-- /.navbar-collapse -->
+      </div>
+   </div>
+</nav>

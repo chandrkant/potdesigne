@@ -1,0 +1,85 @@
+<div id="list-and-map" class="row">
+	<div id="map-canvas" class="col-xs-12 col-sm-12 border-block"></div>
+	</div>
+  <input type="hidden" id="rentalgeek_applicant_id" value={{unbound session.applicant.id}} >
+<div class="row">
+
+	<div id="table-container" class="col-xs-12 col-sm-12 table-responsive border-block result-table">
+
+	    <table class="table table-striped table-hover table-bordered">
+		  <thead>
+    <th>Address</th>
+    <th>Bed</th>
+    <th>Bath</th>
+    <th>Rent</th>
+	<th class="last-td"></th>
+  </head>
+		    <tbody>
+
+          {{#each offering in model}}
+
+          	<tr>
+			 <td class="street-names">
+				<strong>Address</strong>
+                <a class="rental-offering-attribute street-name" {{bind-attr href= offering.url}} target="_newtab">{{offering.rentalComplexStreetName}}</a>
+                <br>
+                <span class="rental-offering-attribute-name cross-street-name">at
+                  {{offering.rentalComplexCrossStreetName}}</span>
+              </td>
+              <td>
+			  <strong>Bed</strong>
+                <div class="rental-offering-attribute bedroom-count">{{bedroomCountValue offering.bedroomCount}}</div>
+              </td>
+
+              <td>
+			  <strong>Bath</strong>
+                <div class="rental-offering-attribute">{{bathroomCountValue offering.fullBathroomCount  offering.halfBathroomCount}}</div>
+              </td>
+
+              <td>
+			  <strong>Rent</strong>
+                <div class="rental-offering-attribute monthly-rent">${{offering.monthlyRentFloor}}</div>
+              </td>
+
+             
+
+              <td>
+                <a  {{action openDetailsModal offering this.applicants}} class="btn btn-default">Details</a>
+
+        {{#if offering.starred}}
+				  <a id="star-yellow-{{unbound offering.id}}"style="padding:0px" {{action 'deleteStarredProperties' offering this.applicants}} class="pure-button star-icon-yellow"><span></span></a>
+          <a id="star-white-{{unbound offering.id}}" {{action 'createStarredProperties' offering this.applicants}} style="display:none" class="pure-button star-icon"><span></span></a>
+        {{else}}
+          <a id="star-white-{{unbound offering.id}}" {{action 'createStarredProperties' offering this.applicants}} class="pure-button star-icon"><span></span></a>
+          <a id="star-yellow-{{unbound offering.id}}"style="padding:0px; display:none" {{action 'deleteStarredProperties' offering this.applicants}} class="pure-button star-icon-yellow"><span></span></a>
+        {{/if}}
+
+				<div id="socialHolder" class="col-md-3 right">
+        		<div id="socialShare" class="btn-group share-group">
+                    <a data-toggle="dropdown" class="btn btn-info">
+                         <i class="fa fa-share-alt fa-inverse"></i>
+                    </a>
+    				<button href="#" data-toggle="dropdown" class="btn btn-info dropdown-toggle share">
+    					<span class="caret"></span>
+    				</button>
+    				<ul class="dropdown-menu">
+<!-- Go to www.addthis.com/dashboard to generate a new set of sharing buttons -->
+<li><a href="https://api.addthis.com/oexchange/0.8/forward/facebook/offer?url=http%3A%2F%2Fwww.addthis.com&pubid=ra-54350220470aa4a5&ct=1&title=AddThis%20-%20Get%20likes%2C%20get%20shares%2C%20get%20followers&pco=tbxnj-1.0" target="_blank"><img src="https://cache.addthiscdn.com/icons/v2/thumbs/32x32/facebook.png" border="0" alt="Facebook"/></a></li>
+<li><a href="https://api.addthis.com/oexchange/0.8/forward/twitter/offer?url=http%3A%2F%2Fwww.addthis.com&pubid=ra-54350220470aa4a5&ct=1&title=AddThis%20-%20Get%20likes%2C%20get%20shares%2C%20get%20followers&pco=tbxnj-1.0" target="_blank"><img src="https://cache.addthiscdn.com/icons/v2/thumbs/32x32/twitter.png" border="0" alt="Twitter"/></a></li>
+<li><a href="https://api.addthis.com/oexchange/0.8/forward/google_plusone_share/offer?url=http%3A%2F%2Fwww.addthis.com&pubid=ra-54350220470aa4a5&ct=1&title=AddThis%20-%20Get%20likes%2C%20get%20shares%2C%20get%20followers&pco=tbxnj-1.0" target="_blank"><img src="https://cache.addthiscdn.com/icons/v2/thumbs/32x32/google_plusone_share.png" border="0" alt="Google+"/></a></li>
+<li><a href="https://api.addthis.com/oexchange/0.8/forward/pinterest/offer?url=http%3A%2F%2Fwww.addthis.com&pubid=ra-54350220470aa4a5&ct=1&title=AddThis%20-%20Get%20likes%2C%20get%20shares%2C%20get%20followers&pco=tbxnj-1.0" target="_blank"><img src="https://cache.addthiscdn.com/icons/v2/thumbs/32x32/pinterest.png" border="0" alt="Pinterest"/></a></li>
+<li><a href="https://api.addthis.com/oexchange/0.8/forward/linkedin/offer?url=http%3A%2F%2Fwww.addthis.com&pubid=ra-54350220470aa4a5&ct=1&title=AddThis%20-%20Get%20likes%2C%20get%20shares%2C%20get%20followers&pco=tbxnj-1.0" target="_blank"><img src="https://cache.addthiscdn.com/icons/v2/thumbs/32x32/linkedin.png" border="0" alt="LinkedIn"/></a></li>
+<li><a href="https://www.addthis.com/bookmark.php?source=tbx32nj-1.0&v=300&url=http%3A%2F%2Fwww.addthis.com&pubid=ra-54350220470aa4a5&ct=1&title=AddThis%20-%20Get%20likes%2C%20get%20shares%2C%20get%20followers&pco=tbxnj-1.0" target="_blank"><img src="https://cache.addthiscdn.com/icons/v2/thumbs/32x32/addthis.png" border="0" alt="Addthis"/></a></li>
+
+                    </ul>
+    			</div>
+            </div>
+				</td>
+            </tr>
+          {{/each}}
+		    </tbody>
+	    </table>
+      {{page-numbers content=content}}
+	</div>
+	</div>
+</div>

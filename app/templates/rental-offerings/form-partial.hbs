@@ -1,0 +1,393 @@
+{{#form-for model class="pure-form"}}
+<div class="panel panel-primary pure-u-1">
+  <div class="panel-heading">
+    <h3 class="panel-title">information</h3>
+  </div>
+
+  <div class="panel-body">
+    <div class="row">
+      <div class="col-xs-12 col-sm-6 col-md-4 form-group">
+        {{input headline label="Address"}}
+      </div>
+      <div class="col-xs-12 col-sm-6 col-md-4 form-group">
+        {{input url}}
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-xs-12 col-sm-6 col-md-4 form-group">
+        {{input earliestAvailableOn label="Available On" as="date_input"}}
+      </div>
+      <div class="col-xs-12 col-sm-6 col-md-4 form-group">
+        {{input bedroomCount}}
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-xs-12 col-sm-6 col-md-4 form-group">
+        {{input fullBathroomCount}}
+      </div>
+      <div class="col-xs-12 col-sm-6 col-md-4 form-group">
+        {{input halfBathroomCount}}
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-xs-12 col-sm-6 col-md-4 form-group">
+        {{input monthlyRentFloor}}
+      </div>
+      <div class="col-xs-12 col-sm-6 col-md-4 form-group">
+        {{input monthlyRentCeiling}}
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-xs-12 col-sm-6 col-md-4 form-group">
+        {{input squareFootageFloor}}
+      </div>
+      <div class="col-xs-12 col-sm-6 col-md-4 form-group">
+        {{input squareFootageCeiling}}
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-xs-12 col-sm-6 col-md-4 form-group">
+        {{input rentalOfferingType label="Type" as="select" collection="view.controller.property_type" prompt="Select Type"}}
+      </div>
+      <div class="col-xs-12 col-sm-6 col-md-4 form-group">
+        {{#if isControllerNew}}
+        {{input rentalComplex as='select' label="Complex"
+        collection='view.controller.complexes'
+        optionValuePath="content.id"
+        optionLabelPath="content.name"
+        prompt="Select Complex"
+      }}
+      {{else}}
+      {{input rentalComplex as='select' label="Complex"
+      collection='view.controller.complexes'
+      optionValuePath="content.id"
+      optionLabelPath="content.name"
+      selection="rentalComplex.content"
+      prompt="Select Complex"
+    }}
+    {{/if}}
+  </div>
+</div>
+
+
+
+
+
+<div class="row">
+  <div class="col-xs-12 col-sm-8 form-group">
+    {{input salesyDescription label="Description" as="text"}}
+  </div>
+</div>
+
+
+<div class="row">
+  <div class="col-xs-12 col-sm-8 form-group">
+
+    <div class="btn-group" data-toggle="buttons">
+      {{#if model.buzzerIntercom}}
+      <label class="btn btn-default active">
+        {{#input buzzerIntercom}}
+          {{input-field buzzerIntercom as="checkbox" autocomplete="off"}} Buzzer Intercom?
+        {{/input}}
+      </label>
+      {{else}}
+      <label class="btn btn-default">
+        {{#input buzzerIntercom}}
+          {{input-field buzzerIntercom as="checkbox" autocomplete="off"}} Buzzer Intercom?
+        {{/input}}
+      </label>
+      {{/if}}
+
+
+      {{#if model.centralAir}}
+      <label class="btn btn-default active">
+        {{#input centralAir}}
+        {{input-field centralAir as="checkbox" autocomplete="off"}} Central Air?</label>
+        {{/input}}
+      </label>
+      {{else}}
+      <label class="btn btn-default">
+        {{#input centralAir}}
+        {{input-field centralAir as="checkbox" autocomplete="off"}} Central Air?</label>
+        {{/input}}
+      </label>
+      {{/if}}
+
+
+
+      {{#if model.deckPatio}}
+      <label class="btn btn-default active">
+        {{#input deckPatio}}
+        {{input-field deckPatio as="checkbox" autocomplete="off"}} Deck Patio?</label>
+        {{/input}}
+      </label>
+      {{else}}
+      <label class="btn btn-default">
+        {{#input deckPatio}}
+        {{input-field deckPatio as="checkbox" autocomplete="off"}} Deck Patio?</label>
+        {{/input}}
+      </label>
+      {{/if}}
+
+
+      {{#if model.dishwater}}
+      <label class="btn btn-default active">
+        {{#input dishwater}}
+        {{input-field dishwater as="checkbox" autocomplete="off"}} Dishwater?</label>
+        {{/input}}
+      </label>
+      {{else}}
+      <label class="btn btn-default">
+        {{#input dishwater}}
+        {{input-field dishwater as="checkbox" autocomplete="off"}} Dishwater?</label>
+        {{/input}}
+      </label>
+      {{/if}}
+
+    </div>
+  </div>
+</div>
+
+<div class="row">
+  <div class="col-xs-12 col-sm-8 form-group">
+
+    <div class="btn-group" data-toggle="buttons">
+      {{#if model.doorman}}
+      <label class="btn btn-default active">
+        {{#input doorman}}
+        {{input-field doorman as="checkbox"}} Doorman?</label>
+        {{/input}}
+      </label>
+      {{else}}
+      <label class="btn btn-default">
+        {{#input doorman}}
+        {{input-field doorman as="checkbox"}} Doorman?</label>
+        {{/input}}
+      </label>
+      {{/if}}
+
+
+      {{#if model.elevator}}
+      <label class="btn btn-default active">
+        {{#input elevator}}
+        {{input-field elevator as="checkbox"}} Elevator?</label>
+        {{/input}}
+      </label>
+      {{else}}
+      <label class="btn btn-default">
+        {{#input elevator}}
+        {{input-field elevator as="checkbox"}} Elevator?</label>
+        {{/input}}
+      </label>
+      {{/if}}
+
+
+      {{#if model.fireplace}}
+      <label class="btn btn-default active">
+        {{#input fireplace}}
+        {{input-field fireplace as="checkbox"}} Fireplace?</label>
+        {{/input}}
+      </label>
+      {{else}}
+      <label class="btn btn-default">
+        {{#input fireplace}}
+        {{input-field fireplace as="checkbox"}} Fireplace?</label>
+        {{/input}}
+      </label>
+      {{/if}}
+
+
+      {{#if model.gym}}
+      <label class="btn btn-default active">
+        {{#input gym}}
+        {{input-field gym as="checkbox"}} Gym?</label>
+        {{/input}}
+      </label>
+      {{else}}
+      <label class="btn btn-default">
+        {{#input gym}}
+        {{input-field gym as="checkbox"}} Gym?</label>
+        {{/input}}
+      </label>
+      {{/if}}
+
+    </div>
+  </div>
+</div>
+
+<div class="row">
+  <div class="col-xs-12 col-sm-8 form-group">
+
+    <div class="btn-group" data-toggle="buttons">
+      {{#if model.hardwoodFloor}}
+      <label class="btn btn-default active">
+        {{#input hardwoodFloor}}
+        {{input-field hardwoodFloor as="checkbox"}} Hardwood Floor?
+        {{/input}}
+      </label>
+      {{else}}
+      <label class="btn btn-default">
+        {{#input hardwoodFloor}}
+        {{input-field hardwoodFloor as="checkbox"}} Hardwood Floor?
+        {{/input}}
+      </label>
+      {{/if}}
+
+
+      {{#if model.parkingGarage}}
+      <label class="btn btn-default active">
+        {{#input parkingGarage}}
+        {{input-field parkingGarage as="checkbox"}} Parking Garage?
+        {{/input}}
+      </label>
+      {{else}}
+      <label class="btn btn-default">
+        {{#input parkingGarage}}
+        {{input-field parkingGarage as="checkbox"}} Parking Garage?
+        {{/input}}
+      </label>
+      {{/if}}
+
+
+      {{#if model.parkingOutdoor}}
+      <label class="btn btn-default active">
+        {{#input parkingOutdoor}}
+        {{input-field parkingOutdoor as="checkbox"}} Parking Outdoor?
+        {{/input}}
+      </label>
+      {{else}}
+      <label class="btn btn-default">
+        {{#input parkingOutdoor}}
+        {{input-field parkingOutdoor as="checkbox"}} Parking Outdoor?
+        {{/input}}
+      </label>
+      {{/if}}
+
+
+      {{#if model.pool}}
+      <label class="btn btn-default active">
+        {{#input pool}}
+        {{input-field pool as="checkbox"}} Pool?
+        {{/input}}
+      </label>
+      {{else}}
+      <label class="btn btn-default">
+        {{#input pool}}
+        {{input-field pool as="checkbox"}} Pool?
+        {{/input}}
+      </label>
+      {{/if}}
+
+    </div>
+  </div>
+</div>
+
+<div class="row">
+  <div class="col-xs-12 col-sm-8 form-group">
+
+    <div class="btn-group" data-toggle="buttons">
+      {{#if model.storageSpace}}
+      <label class="btn btn-default active">
+        {{#input storageSpace}}
+        {{input-field storageSpace as="checkbox"}} Storage Space?
+        {{/input}}
+      </label>
+      {{else}}
+      <label class="btn btn-default">
+        {{#input storageSpace}}
+        {{input-field storageSpace as="checkbox"}} Storage Space?
+        {{/input}}
+      </label>
+      {{/if}}
+
+
+      {{#if model.vaultedCeiling}}
+      <label class="btn btn-default active">
+        {{#input vaultedCeiling}}
+        {{input-field vaultedCeiling as="checkbox"}} Vaulted Ceiling?
+        {{/input}}
+      </label>
+      {{else}}
+      <label class="btn btn-default">
+        {{#input vaultedCeiling}}
+        {{input-field vaultedCeiling as="checkbox"}} Vaulted Ceiling?
+        {{/input}}
+      </label>
+      {{/if}}
+
+
+      {{#if model.walkinCloset}}
+      <label class="btn btn-default active">
+        {{#input walkinCloset}}
+        {{input-field walkinCloset as="checkbox"}} Walkin Closet?
+        {{/input}}
+      </label>
+      {{else}}
+      <label class="btn btn-default">
+        {{#input walkinCloset}}
+        {{input-field walkinCloset as="checkbox"}} Walkin Closet?
+        {{/input}}
+      </label>
+      {{/if}}
+
+
+      {{#if model.washerDryer}}
+      <label class="btn btn-default active">
+        {{#input washerDryer}}
+        {{input-field washerDryer as="checkbox"}} Washer Dryer?
+        {{/input}}
+      </label>
+      {{else}}
+      <label class="btn btn-default">
+        {{#input washerDryer}}
+        {{input-field washerDryer as="checkbox"}} Washer Dryer?
+        {{/input}}
+      </label>
+      {{/if}}
+
+    </div>
+  </div>
+</div>
+
+<div class="row">
+  <div class="col-xs-12 col-sm-8 form-group">
+    <div class="btn-group" data-toggle="buttons">
+      {{#if model.yardPrivate}}
+      <label class="btn btn-default active">
+       {{#input yardPrivate}}
+       {{input-field yardPrivate as="checkbox"}} Yard private?
+       {{/input}}
+     </label>
+     {{else}}
+     <label class="btn btn-default">
+       {{#input yardPrivate}}
+       {{input-field yardPrivate as="checkbox"}} Yard private?
+       {{/input}}
+     </label>
+     {{/if}}
+
+     {{#if model.yardShared}}
+     <label class="btn btn-default active">
+      {{#input yardShared}}
+      {{input-field yardShared as="checkbox"}} Yard Shared?
+      {{/input}}
+    </label>
+    {{else}}
+    <label class="btn btn-default">
+      {{#input yardShared}}
+      {{input-field yardShared as="checkbox"}} Yard Shared?
+      {{/input}}
+    </label>
+    {{/if}}
+
+
+  </div>
+</div>
+</div>
+
+</div>
+</div>
+<button class="btn btn-primary"{{action "submit" content}}>Save</button>
+<button class="btn btn-default" {{action 'cancel'}} >Cancel</button>
+{{/form-for}}
+

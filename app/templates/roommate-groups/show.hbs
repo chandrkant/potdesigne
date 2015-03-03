@@ -1,0 +1,205 @@
+{{#if successMessage}}
+<div class="alert alert-success">
+	<button type="button" class="close" data-dismiss="alert">&times;</button>
+	<h4>{{successMessage}}</h4>
+</div>
+{{/if}}
+{{#if errorMessage}}
+<div class="alert alert-error"> {{unbound errorMessage}} </div>
+{{/if}}
+<div class="container">
+	<div class="border-block">
+		<div class="row">
+			<div class="control-group" id="fields">
+				<div class="controls">
+					<form class="pure-form col-md-6 col-sm-12 col-xs-12 roommate-form" role="form" autocomplete="off" {{action "invite" model.id on="submit"}}>
+						<h3>Invite Roommates</h3>
+						<fieldset>
+							<div class="form-group multiple-form-group roommate-email" data-max=10>
+								<div class="form-group input-group">
+									<div class="roommate-img"></div>
+									<input type="text" name="multiple[]" class="form-control roommate_emails" placeholder="Email addresses separated by comma">
+									<!--<span class="input-group-btn">
+										<button type="button" class="btn btn-default btn-add">+
+										</button>
+									</span>-->
+								</input>
+							</div>
+						</div>
+						<div id="content-container">
+							<div class="advanced-wrapper">
+								<div class="toolbar-container"><span class="ql-format-group">
+									<select title="Font" class="ql-font">
+										<option value="sans-serif" selected>Sans Serif</option>
+										<option value="Georgia, serif">Serif</option>
+										<option value="Monaco, 'Courier New', monospace">Monospace</option>
+									</select>
+									<select title="Size" class="ql-size">
+										<option value="10px">Small</option>
+										<option value="13px" selected>Normal</option>
+										<option value="18px">Large</option>
+										<option value="32px">Huge</option>
+									</select></span><span class="ql-format-group"><span title="Bold" class="ql-format-button ql-bold"></span><span class="ql-format-separator"></span><span title="Italic" class="ql-format-button ql-italic"></span><span class="ql-format-separator"></span><span title="Underline" class="ql-format-button ql-underline"></span></span><span class="ql-format-group">
+									<select title="Text Color" class="ql-color">
+										<option value="rgb(0, 0, 0)" selected></option>
+										<option value="rgb(230, 0, 0)"></option>
+										<option value="rgb(255, 153, 0)"></option>
+										<option value="rgb(255, 255, 0)"></option>
+										<option value="rgb(0, 138, 0)"></option>
+										<option value="rgb(0, 102, 204)"></option>
+										<option value="rgb(153, 51, 255)"></option>
+										<option value="rgb(255, 255, 255)"></option>
+										<option value="rgb(250, 204, 204)"></option>
+										<option value="rgb(255, 235, 204)"></option>
+										<option value="rgb(255, 255, 204)"></option>
+										<option value="rgb(204, 232, 204)"></option>
+										<option value="rgb(204, 224, 245)"></option>
+										<option value="rgb(235, 214, 255)"></option>
+										<option value="rgb(187, 187, 187)"></option>
+										<option value="rgb(240, 102, 102)"></option>
+										<option value="rgb(255, 194, 102)"></option>
+										<option value="rgb(255, 255, 102)"></option>
+										<option value="rgb(102, 185, 102)"></option>
+										<option value="rgb(102, 163, 224)"></option>
+										<option value="rgb(194, 133, 255)"></option>
+										<option value="rgb(136, 136, 136)"></option>
+										<option value="rgb(161, 0, 0)"></option>
+										<option value="rgb(178, 107, 0)"></option>
+										<option value="rgb(178, 178, 0)"></option>
+										<option value="rgb(0, 97, 0)"></option>
+										<option value="rgb(0, 71, 178)"></option>
+										<option value="rgb(107, 36, 178)"></option>
+										<option value="rgb(68, 68, 68)"></option>
+										<option value="rgb(92, 0, 0)"></option>
+										<option value="rgb(102, 61, 0)"></option>
+										<option value="rgb(102, 102, 0)"></option>
+										<option value="rgb(0, 55, 0)"></option>
+										<option value="rgb(0, 41, 102)"></option>
+										<option value="rgb(61, 20, 102)"></option>
+									</select><span class="ql-format-separator"></span>
+									<select title="Background Color" class="ql-background">
+										<option value="rgb(0, 0, 0)"></option>
+										<option value="rgb(230, 0, 0)"></option>
+										<option value="rgb(255, 153, 0)"></option>
+										<option value="rgb(255, 255, 0)"></option>
+										<option value="rgb(0, 138, 0)"></option>
+										<option value="rgb(0, 102, 204)"></option>
+										<option value="rgb(153, 51, 255)"></option>
+										<option value="rgb(255, 255, 255)" selected></option>
+										<option value="rgb(250, 204, 204)"></option>
+										<option value="rgb(255, 235, 204)"></option>
+										<option value="rgb(255, 255, 204)"></option>
+										<option value="rgb(204, 232, 204)"></option>
+										<option value="rgb(204, 224, 245)"></option>
+										<option value="rgb(235, 214, 255)"></option>
+										<option value="rgb(187, 187, 187)"></option>
+										<option value="rgb(240, 102, 102)"></option>
+										<option value="rgb(255, 194, 102)"></option>
+										<option value="rgb(255, 255, 102)"></option>
+										<option value="rgb(102, 185, 102)"></option>
+										<option value="rgb(102, 163, 224)"></option>
+										<option value="rgb(194, 133, 255)"></option>
+										<option value="rgb(136, 136, 136)"></option>
+										<option value="rgb(161, 0, 0)"></option>
+										<option value="rgb(178, 107, 0)"></option>
+										<option value="rgb(178, 178, 0)"></option>
+										<option value="rgb(0, 97, 0)"></option>
+										<option value="rgb(0, 71, 178)"></option>
+										<option value="rgb(107, 36, 178)"></option>
+										<option value="rgb(68, 68, 68)"></option>
+										<option value="rgb(92, 0, 0)"></option>
+										<option value="rgb(102, 61, 0)"></option>
+										<option value="rgb(102, 102, 0)"></option>
+										<option value="rgb(0, 55, 0)"></option>
+										<option value="rgb(0, 41, 102)"></option>
+										<option value="rgb(61, 20, 102)"></option>
+									</select><span class="ql-format-separator"></span>
+									<select title="Text Alignment" class="ql-align">
+										<option value="left" selected></option>
+										<option value="center"></option>
+										<option value="right"></option>
+										<option value="justify"></option>
+									</select></span><span class="ql-format-group"><span title="Link" class="ql-format-button ql-link"></span><span class="ql-format-separator"></span><span title="Image" class="ql-format-button ql-image"></span><span class="ql-format-separator"></span><span title="List" class="ql-format-button ql-list"></span></span></div>
+									<div class="editor-container" height="25px" id="edit_cont">
+									Hey Homie, ...
+									</div>
+								</div>
+							</div>
+						</fieldset>
+						<button type="submit" class="pure-button pure-input-1 pure-button-primary">Invite</button>
+					</form>
+				</div>
+			</div>
+		</div>
+	</div>
+
+	<div class="border-block">
+		<h3>Group Name: {{model.name}}</h3>
+		<table class="table table-striped table-hover table-bordered">
+			<thead>
+				<tr>
+					<th>Avatar</th>
+					<th>Member Name</th>
+					<th>Email</th>
+					<th>Roommate Readiness</th>
+					<th>Action</th>
+				</tr>
+			</thead>
+			<tbody>
+				{{#if model._data.applicants }}
+				{{#each item in model._data.applicants}}
+				<tr>
+					<td>
+						{{#if item.avatar}}
+			<img width="100" height="" alt="place holder" src={{unbound item.avatar}}>
+            {{else}}
+              <div class="roommate-form">
+                <div class="roommategroup-roommate-img"></div>
+              </div>
+            {{/if}}
+					</td>
+					<td>
+						<p>{{item.full_name}}</p>
+					</td>
+					<td>
+						<p>{{item.email}}</p>
+					</td>
+					{{#if item.profile_id}}
+					{{#if item.payment}}
+					<td>
+						<p>Ready</p>
+					</td>
+					{{else}}
+					<td>
+						<p>Payment Missing</p>
+					</td>
+					{{/if}}
+					{{else}}
+					{{#if item.payment}}
+					<td>
+						<p>Tenant Form Missing</p>
+					</td>
+					{{else}}
+					<td>
+						<ul><li>Tenant Form Missing</li><li>Payment Missing</li><ul>
+					</td>
+					{{/if}}
+					{{/if}}
+
+					<td>
+						<button class="btn btn-primary" {{action 'remove' item.id}}>Remove</button>
+					</td>
+				</tr>
+				{{/each}}
+				{{else}}
+				<tr>
+					<td colspan="5">
+						<p><center>No one were added in this group yet.</center></p>
+					</td>
+				</tr>
+				{{/if}}
+			</tbody>
+		</table>
+
+	</div>
+</div>

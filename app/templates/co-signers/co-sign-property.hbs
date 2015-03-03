@@ -1,0 +1,155 @@
+<div class="container">
+  <div class="row">
+    <!--product images gallery start-->
+    <div class="col-md-6">
+      <div class="slider slider-for">
+
+        {{#each model.photos}}
+          <div><img src="{{unbound photo}}" height="400px" width="555px"/></div>
+        {{/each}}
+      </div>
+      <div class="slider slider-nav">
+        {{#each model.photos}}
+          <div><img src="{{unbound thumb}}"/></div>
+        {{/each}}
+      </div>
+    </div>
+    <!--product images gallery start-->
+    <div class="col-md-6 details-right">
+
+          <div class="panel with-nav-tabs panel-default">
+              <div class="panel-heading">
+                <ul class="nav nav-tabs">
+                    <li class="active"><a href="#tab1primary" data-toggle="tab">Info</a></li>
+                    <li><a href="#tab2primary" data-toggle="tab">Message</a></li>
+                    <li><a href="#tab3primary" data-toggle="tab">Map</a></li>
+                </ul>
+              </div>
+              <div class="panel-body">
+                <div class="tab-content">
+                    <div class="tab-pane fade in active" id="tab1primary">
+
+                      <div class="row">
+                        <h1 class="col-md-8">{{model.offering.rentalComplexFullAddress}}</h1>
+                        <span class="col-md-4">${{model.offering.monthlyRentCeiling}}</span>
+                      </div>
+
+                      <ul class="icons-options clearfix">
+                        <li class="walk-icon col-md-4"><span>{{model.offering.rentalComplexWalkTime}}</span>walk to campus</li>
+                        <li class="bed-icon col-md-4"><span>{{model.offering.bedroomCount}}</span>Bedrooms</li>
+                        <li class="bath-icon col-md-4"><span>{{model.offering.fullBathroomCount}}</span>Bathrooms</li>
+                      </ul>
+                      <div class="row">
+                        <div class="col-md-6">
+                          <h3>Details</h3>
+                          <ul>
+                            {{#if model.offering.buzzer_intercom}}
+                              <li>Buzzer/Intercom</li>
+                            {{/if}}
+                            {{#if model.offering.central_air}}
+                              <li>Central Air</li>
+                            {{/if}}
+                            {{#if model.offering.deck_patio}}
+                              <li>Deck/Patio</li>
+                            {{/if}}
+                            {{#if model.offering.dishwater}}
+                              <li>Dishwasher</li>
+                            {{/if}}
+                            {{#if model.offering.doorman}}
+                              <li>Doorman</li>
+                            {{/if}}
+                            {{#if model.offering.elevator}}
+                              <li>Elevator</li>
+                            {{/if}}
+                            {{#if model.offering.fireplace}}
+                              <li>Fireplace</li>
+                            {{/if}}
+                            {{#if model.offering.gym}}
+                              <li>Gym</li>
+                            {{/if}}
+                            {{#if model.offering.hardwood_floor}}
+                              <li>Hardwood Floor</li>
+                            {{/if}}
+                            {{#if model.offering.new_appliances}}
+                              <li>New Appliances</li>
+                            {{/if}}
+                            {{#if model.offering.parking_garage}}
+                              <li>Parking Garage</li>
+                            {{/if}}
+                            {{#if model.offering.parking_outdoor}}
+                              <li>Parking Outdoor</li>
+                            {{/if}}
+                            {{#if model.offering.storage_space}}
+                              <li>Storage Space</li>
+                            {{/if}}
+                            {{#if model.offering.vaulted_ceiling}}
+                              <li>Vaulted Ceiling</li>
+                            {{/if}}
+                            {{#if model.offering.walkin_closet}}
+                              <li>Walkin Closet</li>
+                            {{/if}}
+                            {{#if model.offering.washer_dryer}}
+                              <li>Washer/Dryer</li>
+                            {{/if}}
+                            {{#if model.offering.yard_private}}
+                              <li>Yard Private</li>
+                            {{/if}}
+                            {{#if model.offering.yard_shared}}
+                              <li>Yard Shared</li>
+                            {{/if}}
+                            {{nearbyPlace model.offering.scrapeAmenities}}
+                          </ul>
+                        </div>
+
+                        <div class="col-md-6">
+                          <h3>Nearest</h3>
+                          <ul>
+                            {{nearbyPlace model.offering.rentalComplexNearbyPlaces}}
+                          </ul>
+                        </div>
+                      </div>
+                      <h3>Description</h3>
+                      <p>{{model.offering.salesyDescription}}</p>
+                      <h3>Ways to pay rent</h3>
+                      <ul>
+                        {{#if model.offering.propertyManagerAcceptsCash}}
+                          <li>Cash</li>
+                        {{/if}}
+                        {{#if model.offering.propertyManagerAcceptsCreditCardsOffline}}
+                          <li>Credit Card (non-online)</li>
+                        {{/if}}
+                        {{#if model.offering.propertyManagerAcceptsOnlinePayments}}
+                          <li>Online</li>
+                        {{/if}}
+                        {{#if model.offering.propertyManagerAcceptsChecks}}
+                          <li>Checks</li>
+                        {{/if}}
+                        {{#if model.offering.propertyManagerAcceptsMoneyOrders}}
+                          <li>Money Orders</li>
+                        {{/if}}
+                      </ul>
+                    </div>
+                    <div class="tab-pane fade" id="tab2primary">Primary 2</div>
+                    <div class="tab-pane fade" id="tab3primary">
+                      <iframe
+                        width="500"
+                        height="400"
+                        frameborder="0" style="border:0"
+                        src="{{unbound map_url model.offering.rentalComplexFullAddress}}">
+                      </iframe>
+                    </div>
+                  </div>
+              </div>
+          </div>
+          <div class="buttons-set">
+          <button class="button-xlarge pure-button btn-primary" {{action 'cosign'}}>Co-Sign</button>
+          </div>
+          {{#if errorMessage}}
+            <div class="alert alert-error"> 
+            <button type="button" class="close"  data-dismiss="alert">&times;</button>
+                {{errorMessage}}
+            </div>
+          {{/if}}
+        </div>
+    </div>
+</div>

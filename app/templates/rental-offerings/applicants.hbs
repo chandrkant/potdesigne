@@ -1,0 +1,90 @@
+<div class="page-title clearfix">
+    <h1>Applicants</h1>
+</div>
+
+<div class="border-block">
+<table class="table table-striped table-hover table-bordered">
+  <thead>
+    <th>Email</th>
+    <th>Full Name</th>
+    <th>Tenant Form</th>
+    <th>Action</th>
+    <th>Agreement form</th>
+    <th colspan="2" >Agreement form Status</th>
+    {{!-- <th>Request Report</th> --}}
+  </thead>
+  <tbody>
+    {{#each model.applies}}
+      <tr>
+        <td><strong>Email</strong>
+          <div>{{email}}</div>
+        </td>
+        <td><strong>Full Name</strong>
+          <div>{{full_name}}</div>
+        </td>
+        <td><strong>Tenant Form</strong>
+          <div><a {{action 'tenantModal' profile_id}}>Show Tenant Form</a></div>
+        </td>
+        <td>
+       <strong>Action</strong>
+          {{#if applicable}}
+            {{#if accepted}}
+              <button class="btn btn-success">Approved</button>
+              <button class="btn btn-danger" id="disapprove_button_{{unbound id}}" {{action 'disapprove' id}}>disapprove</button>
+            {{else}}
+             <button class="btn btn-danger hide" id="disapprove_button_{{unbound id}}" {{action 'disapprove' id}}>disapprove</button>
+              <button id="approve_button_{{unbound id}}" class="btn btn-success hide approve_button">Approved</button>
+              <button id="denied_button_{{unbound id}}" class="btn btn-danger hide denied_button">Denied</button>
+              <p class="approve_deny" id="approve_deny_{{unbound id}}" >
+                <a {{action 'approve' id }} class="btn btn-primary">Approve</a>
+                <a {{action 'deny' id }} class="btn btn-danger">Deny</a>
+              </p>
+            {{/if}}
+          {{else}}
+          {{#if accepted}}
+              <button class="btn btn-success">Approved Group</button>
+              <button class="btn btn-danger" id="disapprove_button_{{unbound id}}" {{action 'disapprove' id}}>disapprove Group</button>
+            {{else}}
+             <button class="btn btn-danger hide" id="disapprove_button_{{unbound id}}" {{action 'disapprove' id}}>Group disapprove</button>
+              <button id="approve_button_{{unbound id}}" class="btn btn-success hide approve_button">Group Approved</button>
+              <button id="denied_button_{{unbound id}}" class="btn btn-danger hide denied_button">Denied</button>
+              <p class="approve_deny" id="approve_deny_{{unbound id}}" >
+                <a {{action 'approve' id }} class="btn btn-primary">Approve Group</a>
+                <a {{action 'deny' id }} class="btn btn-danger">Deny Group</a>
+              </p>
+            {{/if}}
+          {{/if}}
+        </td>
+        <td><strong>Agreement form</strong>
+          {{#input agreementForm}}
+          {{input-field as='select' id=id
+              collection='view.controller.attachments'
+              optionValuePath="content.id"
+              optionLabelPath="content.name"
+              prompt="Select Form"
+            }}
+          {{/input}}
+          <div><a {{action 'sendAgreement' id}} class="btn btn-primary">send</a></div>
+        </td>
+        <td>
+          <strong>Agreement form Status</strong>
+          <div style="text-transform: capitalize;">{{agreement_status}}</div>
+        </td>
+        <td>
+          {{#if agreement_url}}
+          <a target="_blank" href="{{unbound agreement_url}}"> View </a>
+          {{/if}}
+        </td>
+        {{!-- {{#if victig_url}}
+        <td><strong>Request Report</strong> <a target="_blank" href="{{unbound victig_url}}"> Click here to view</a></td>
+        {{else}}
+        <td><strong>Request Report</strong>
+        <input type="hidden" class="hiddenId" value={{unbound property_rentalgeek_id}}/>
+          <button class="btn btn-primary" {{action 'tenantScreening' profile_id}}>Request Report</button>
+        </td>
+        {{/if}} --}}
+      </tr>
+    {{/each}}
+  </tbody>
+</table>
+</div>

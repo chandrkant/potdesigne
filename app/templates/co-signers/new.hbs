@@ -1,0 +1,272 @@
+{{#if successMessage}}
+  <div class="alert alert-success">
+    <button type="button" class="close" data-dismiss="alert">&times;</button>
+    <h4>Please check your co signer information.</h4>
+  </div>
+{{/if}}
+{{#form-for model.coSign class="pure-form"}}
+<div class="panel panel-primary pure-u-1 step1 active">
+	<div class="panel-heading">
+		<h3 class="panel-title">Co-Signers Agreement</h3>
+	</div>
+	<div class="panel-body">
+		<div class="row">
+				<div class="col-xs-12 col-sm-6 col-md-4 form-group">
+          {{input cosigningFor label="Name of Applicant Co-Signing For" }}
+				</div>
+				<div class="col-xs-12 col-sm-6 col-md-4 form-group">
+          {{input relationship label="Relationship to Applicant Co-Signing For" }}
+				</div>
+		</div>
+		<div class="row">
+			<div class="col-xs-12 col-sm-4 col-md-4 form-group">
+        {{input firstName}}
+			</div>
+			<div class="col-xs-12 col-sm-4 col-md-4 form-group">
+        {{input lastName}}
+			</div>
+			<div class="col-xs-12 col-sm-4 col-md-4 form-group">
+        {{input ssn label="SSN"}}
+				<div class="ssl-box help-block"><i class="ssl-icon"></i>128-bit SSL encryption</div>
+			</div>
+		</div>
+		<div class="row">
+			<div class="col-xs-12 col-sm-4 col-md-4 form-group">
+        {{input dob label="DOB" as="date_input" }}
+			</div>
+			<div class="col-xs-12 col-sm-4 col-md-4 form-group">
+        {{input address}}
+			</div>
+			<div class="col-xs-12 col-sm-4 col-md-4 form-group">
+        {{input city}}
+			</div>
+		</div>
+		<div class="row">
+			<div class="col-xs-12 col-sm-4 col-md-4 form-group">
+        {{input state}}
+			</div>
+			<div class="col-xs-12 col-sm-4 col-md-4 form-group">
+        {{input zipCode}}
+			</div>
+			<div class="col-xs-12 col-sm-4 col-md-4 form-group">
+        {{input phone}}
+			</div>
+		</div>
+		<div class="row">
+			<div class="col-xs-12 col-sm-4 col-md-4 form-group">
+        {{input email}}
+			</div>
+			<div class="col-xs-12 col-sm-4 col-md-4 form-group">
+        {{input rentOwn label="Do you rent or own?" }}
+			</div>
+			<div class="col-xs-12 col-sm-4 col-md-4 form-group">
+        {{input landlordPhone}}
+			</div>
+		</div>
+		<div class="row">
+			<div class="col-xs-12 col-sm-4 col-md-4 form-group">
+        {{input rentMortage label="What are you currently paying for rent/mortgage?" }}
+			</div>
+		</div>
+		<div class="panel panel-default">
+			<div class="panel-heading">
+				<h3 class="panel-title">Present Employment</h3>
+			</div>
+			<div class="panel-body">
+				<div class="row">
+					<div class="col-xs-12 col-sm-4 col-md-4 form-group">
+            {{input employerName label="Name of Employer"}}
+					</div>
+					<div class="col-xs-12 col-sm-4 col-md-4 form-group">
+            {{input empPosition label="Position"}}
+					</div>
+				</div>
+				<div class="row">
+					<div class="col-xs-12 col-sm-4 col-md-4 form-group">
+            {{input mGrossIncome label="Monthly Gross Income" }}
+					</div>
+					<div class="col-xs-12 col-sm-4 col-md-4 form-group">
+            {{input aSourceIncome label="Additional Source of Income" }}
+					</div>
+				</div> <!-- .row end -->
+			</div> <!-- .panel-body end -->
+		</div> <!-- .panel .panel-default end -->
+		<div class="panel panel-default">
+			<div class="panel-heading">
+				<h3 class="panel-title">Marital Status</h3>
+			</div>
+			<div class="panel-body">
+				<div class="row">
+					<div class="col-xs-12 col-sm-4 col-md-4 form-group">
+            {{input marritalStatus label="Marrital Status" as="select" collection="view.controller.marrital_status"}}
+					</div>
+				</div> <!-- .row end -->
+			</div> <!-- .panel-body end -->
+		</div> <!-- .panel .panel-default end -->
+	</div> <!-- .panel-body line#11 end -->
+</div> <!-- panel panel-primary pure-u-1 step1 -->
+<div class="panel panel-primary pure-u-1 step2">
+	<div class="panel-heading">
+		<h3 class="panel-title">Co-Signers Agreement</h3>
+	</div>
+	<div class="panel-body">
+		<div class="panel panel-default">
+			<div class="panel-heading">
+				<h3 class="panel-title">Spouse Information</h3>
+			</div>
+			<div class="panel-body">
+				<div class="row">
+					<div class="col-xs-12 col-sm-4 col-md-4 form-group">
+            {{input spouseName label="Name" }}
+					</div>
+					<div class="col-xs-12 col-sm-4 col-md-4 form-group">
+            {{input spouseSsn label="SSN" }}
+						<div class="ssl-box help-block"><i class="ssl-icon"></i>128-bit SSL encryption</div>
+					</div>
+					<div class="col-xs-12 col-sm-4 col-md-4 form-group">
+            {{input spouseDob label="DOB" as="date_input" }}
+					</div>
+				</div>
+				<div class="row">
+					<div class="col-xs-12 col-sm-4 col-md-4 form-group">
+            {{input spouseEmployerName label="Name of Employer" }}
+					</div>
+					<div class="col-xs-12 col-sm-4 col-md-4 form-group">
+            {{input spousePosition label="Position" }}
+					</div>
+				</div>
+				<div class="row">
+					<div class="col-xs-12 col-sm-4 col-md-4 form-group">
+            {{input spouseMonthlyGrossIncome label="Monthly Gross Income" }}
+					</div>
+					<div class="col-xs-12 col-sm-4 col-md-4 form-group">
+            {{input spouseAdditionalSourceIncome label="Additional Source of Income" }}
+					</div>
+				</div>
+			</div>
+		</div>
+		<div class="panel panel-default">
+			<div class="panel-heading">
+				<h3 class="panel-title">Accounts</h3>
+			</div>
+			<div class="panel-body">
+				<div class="row">
+					<div class="col-xs-12 col-sm-4 col-md-4 form-group">
+            {{input checkingAccountBankName label="Checking Account Bank Name" }}
+					</div>
+					<div class="col-xs-12 col-sm-4 col-md-4 form-group">
+            {{input savingAccountBankName label="Savings Account Bank Name"}}
+					</div>
+				</div>
+			</div>
+		</div>
+		<div class="panel panel-default">
+			<div class="panel-heading">
+				<h3 class="panel-title">Loans (to include credit cards)</h3>
+			</div>
+			<div class="panel-body">
+				<div class="form-group1 multiple-form-group" >
+					<div class="form-group1 input-group">
+						<div class="row">
+							<div class="col-xs-12 col-sm-4 col-md-4 form-group">
+		            {{input lendersNameOne label="Lender’s Name" }}
+							</div>
+							<div class="col-xs-12 col-sm-4 col-md-4 form-group">
+		            {{input loanTypeOne label="Loan Type" as="select" collection="view.controller.loan_type"}}
+							</div>
+							<div class="col-xs-12 col-sm-4 col-md-4 form-group">
+							<label>Add More</label>
+							<span class="input-group-btn">
+								<button type="button" class="btn btn-default btn-add">+</button>
+							</span>
+							</div>
+						</div> <!-- .row -->
+					</div> <!-- .form-group1 .input-group end -->
+				</div> <!-- .form-group1 .multiple-form-group end -->
+			</div> <!-- .panel-body -->
+		</div> <!-- .panel .panel-default -->
+	</div> <!-- .panel-body line#114 end -->
+</div> <!-- .panel panel-primary pure-u-1 step2 line#110 end -->
+<div class="panel panel-primary pure-u-1 step3">
+	<div class="panel-heading">
+		<h3 class="panel-title">Co-Signers Agreement</h3>
+	</div>
+	<div class="panel-body">
+		<div class="row">
+			<div class="col-xs-12 col-sm-12 col-md-12 form-group">
+				<div>Have you had any outstanding court judgements?</div>
+				<div class="radio">
+					{{#input ocjudgement}}
+			      {{input-field oCourtjudgement as="checkbox"}} <label>Yes</label>
+			    {{/input}}
+				</div>
+			</div>
+		</div>
+		<div class="row">
+			<div class="col-xs-12 col-sm-12 col-md-12 form-group">
+				<div>Have you declared bankruptcy in the last 7 years?</div>
+				<div class="radio">
+					{{#input declaredBankruptcy}}
+						{{input-field declaredBankruptcy as="checkbox"}} <label>Yes</label>
+			    {{/input}}
+				</div>
+			</div>
+		</div>
+		<div class="row">
+			<div class="col-xs-12 col-sm-12 col-md-12 form-group">
+				<div>Are you a party in a lawsuit?</div>
+				<div class="radio">
+					{{#input partyLawsuit}}
+						{{input-field partyLawsuit as="checkbox"}} <label>Yes</label>
+					{{/input}}
+				</div>
+			</div>
+		</div>
+		<div class="row">
+			<div class="col-xs-12 col-sm-12 col-md-12 form-group">
+				<div>Have you ever been convicted of a felony?</div>
+				<div class="radio">
+					{{#input isFelony}}
+						{{input-field isFelony as="checkbox"}} <label>Yes</label>
+					{{/input}}
+				</div>
+			</div>
+		</div>
+		<div class="row">
+			<div class="col-xs-12 col-sm-12 col-md-12 form-group">
+				<div>Have you had property foreclosed on? </div>
+				<div class="radio">
+					{{#input propertyForeclosed}}
+						{{input-field propertyForeclosed as="checkbox"}} <label>Yes</label>
+					{{/input}}
+				</div>
+			</div>
+		</div>
+		<div class="row">
+			<div class="col-xs-12 col-sm-8 col-md-8 form-group">
+				<p>*The undersigned hereby certifies that the above information is true and correct and said information will be relied upon in granting or denying this application. The undersigned hereby authorizes HRC Apartments & Townhomes to investigate as necessary the above information* </p>
+			</div>
+		</div>
+		<div class="row">
+			<div class="col-xs-12 col-sm-4 col-md-4 form-group">
+				<label>Parent/Guardian Signature</label>
+					{{input signatureDate label="Date" as="date_input" }}
+			</div>
+		</div>
+		
+		<div class="row">
+			<div class="col-xs-12 col-sm-4 col-md-4 form-group">
+				<label class="ember-view">Personal Signature</label>
+				<input class="ember-view ember-text-field form-control" type="text" />
+			</div>
+		</div>
+	</div> <!-- .panel-body -->
+</div> <!-- panel panel-primary pure-u-1 step3 -->
+{{/form-for}}
+
+<input id="step1" class="btn btn-primary btn-lg active" type="button" value="Next" />
+<input id="back2" class="btn btn-primary btn-lg active" type="button" value="Back" />
+<input id="step2" class="btn btn-primary btn-lg" type="button" value="Next" />
+<input id="back3" class="btn btn-primary btn-lg" type="button" value="Back" />
+<input id="step3" class="btn btn-primary btn-lg" type="submit" value="Submit Co-Signer Application" {{action "create" content}}>
+

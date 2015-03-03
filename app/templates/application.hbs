@@ -1,0 +1,37 @@
+<main>
+<div class="loder" id="wait">
+   <div id="fountainG">
+      <div id="fountainG_1" class="fountainG"></div>
+      <div id="fountainG_2" class="fountainG"></div>
+      <div id="fountainG_3" class="fountainG"></div>
+      <div id="fountainG_4" class="fountainG"></div>
+      <div id="fountainG_5" class="fountainG"></div>
+      <div id="fountainG_6" class="fountainG"></div>
+      <div id="fountainG_7" class="fountainG"></div>
+      <div id="fountainG_8" class="fountainG"></div>
+   </div>
+</div>
+   {{partial 'neb'}}
+   <div class="main-content pure-u-1">
+      {{outlet}}
+   </div>
+   <footer class="pure-u-1">
+      <div class="footer-content container">
+         <h1 class="slogan pure-u-1">Rent easy.<sup>&trade;</sup></h1>
+         <div class="center row legal">
+            <div class="col-xs-12 footerlink">
+               <ul>
+                  <li><a href="#">Blog</a></li>
+                  <li><a href="#">About Us</a></li>
+               </ul>
+            </div>
+            <div class="col-xs-12">
+               &copy;2014{{partial 'footer-logo'}}, Inc. All rights reserved.<br /><a href="pdfs/Terms-Of-Service-19-03-2014.pdf">Terms of Service</a>
+            </div>
+         </div>
+      </div>
+   </footer>
+</main>
+
+{{outlet modal}}
+

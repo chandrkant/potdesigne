@@ -1,0 +1,23 @@
+<form method="POST" id="myForm" {{action 'uploadFile' content on="submit"}} class="form-horizontal wpc_contact" novalidate="novalidate" enctype="multipart/form-data">
+<fieldset>
+    <div id="legend" class="">
+        <legend class="">Upload Your file</legend>
+        <div id="alert-message" class="alert hidden"></div>
+    </div>
+
+    <div class="control-group">
+
+        <!-- File Upload --> 
+        <div class="controls">
+            <input class="input-file" id="fileInput" type="file" name="file">
+        </div>
+    </div>
+    <div class="control-group">    
+
+        <!-- Button --> 
+        <div class="controls">
+            <button class="btn btn-success">Button</button>
+        </div>
+    </div>
+</fieldset>
+</form> 

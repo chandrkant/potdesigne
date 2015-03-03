@@ -1,0 +1,200 @@
+{{#my-modal title=rentalComplexFullAddress ok='save' close='closeModal'}}
+{{!-- Alliance link: rentalComplexName --}}
+  <input type="hidden" id="rentalgeek_applicant_id" value={{unbound session.applicant.id}} >
+
+  <input type="hidden" id="rentalgeek_rental_offering_id" value={{unbound id}} >
+  <div class="container">
+    <div class="row">
+      <!--product images gallery start-->
+      <div class="col-md-6">
+            <div class="slider slider-for">
+              {{#each photos}}
+                <div><img src="{{unbound photo}}" height="400px" width="555px"/></div>
+              {{/each}}
+            </div>
+            <div class="slider slider-nav">
+              {{#each photos}}
+                <div><img src="{{unbound thumb}}"/></div>
+              {{/each}}
+            </div>
+      </div>
+      <!--product images gallery start-->
+      <div class="col-md-6 details-right">
+
+            <div class="panel with-nav-tabs panel-default">
+                <div class="panel-heading">
+                  <ul class="nav nav-tabs">
+                      <li class="active"><a href="#tab1primary" data-toggle="tab">Info</a></li>
+                      <!--<li><a href="#tab2primary" data-toggle="tab">Message</a></li>-->
+                      <li><a href="#tab3primary" data-toggle="tab">Map</a></li>
+                  </ul>
+                </div>
+                <div class="panel-body">
+                    <div class="tab-content">
+                        <div class="tab-pane fade in active" id="tab1primary">
+
+                          <div class="row">
+                            {{!-- <h1 class="col-md-8">{{rentalComplexFullAddress}}</span></h1> --}}
+                            <h4>
+                              <span class="rental-cost">Monthly Rent:
+                               <i>${{monthlyRentCeiling}}</i>
+                              </span>
+                            </h4>
+                             <br>
+                          </div>
+
+                          <ul class="icons-options clearfix">
+                            <li class="walk-icon col-md-4"><span>{{rentalComplexWalkTime}}</span>walk to campus</li>
+                            <li class="bed-icon col-md-4"><span>{{bedroomCount}}</span>Bedrooms</li>
+                            <li class="bath-icon col-md-4"><span>{{fullBathroomCount}}</span>Bathrooms</li>
+                          </ul>
+                          <div class="row">
+                            <div class="col-md-6">
+                              <h3>Details</h3>
+                              <ul>
+                                {{#if buzzer_intercom}}
+                                  <li>Buzzer/Intercom</li>
+                                {{/if}}
+                                {{#if central_air}}
+                                  <li>Central Air</li>
+                                {{/if}}
+                                {{#if deck_patio}}
+                                  <li>Deck/Patio</li>
+                                {{/if}}
+                                {{#if dishwater}}
+                                  <li>Dishwasher</li>
+                                {{/if}}
+                                {{#if doorman}}
+                                  <li>Doorman</li>
+                                {{/if}}
+                                {{#if elevator}}
+                                  <li>Elevator</li>
+                                {{/if}}
+                                {{#if fireplace}}
+                                  <li>Fireplace</li>
+                                {{/if}}
+                                {{#if gym}}
+                                  <li>Gym</li>
+                                {{/if}}
+                                {{#if hardwood_floor}}
+                                  <li>Hardwood Floor</li>
+                                {{/if}}
+                                {{#if new_appliances}}
+                                  <li>New Appliances</li>
+                                {{/if}}
+                                {{#if parking_garage}}
+                                  <li>Parking Garage</li>
+                                {{/if}}
+                                {{#if parking_outdoor}}
+                                  <li>Parking Outdoor</li>
+                                {{/if}}
+                                {{#if storage_space}}
+                                  <li>Storage Space</li>
+                                {{/if}}
+                                {{#if vaulted_ceiling}}
+                                  <li>Vaulted Ceiling</li>
+                                {{/if}}
+                                {{#if walkin_closet}}
+                                  <li>Walkin Closet</li>
+                                {{/if}}
+                                {{#if washer_dryer}}
+                                  <li>Washer/Dryer</li>
+                                {{/if}}
+                                {{#if yard_private}}
+                                  <li>Yard Private</li>
+                                {{/if}}
+                                {{#if yard_shared}}
+                                  <li>Yard Shared</li>
+                                {{/if}}
+                                {{nearbyPlace scrapeAmenities}}
+                              </ul>
+                            </div>
+
+                            <div class="col-md-6">
+                              <h3>Nearest</h3>
+                              <ul>
+                                {{nearbyPlace rentalComplexNearbyPlaces}}
+                              </ul>
+                            </div>
+                          </div>
+                          <h3>Description</h3>
+                          <p>{{salesyDescription}}</p>
+                          <h3>Ways to pay rent</h3>
+                          <ul>
+                            {{#if propertyManagerAcceptsCash}}
+                              <li>Cash</li>
+                            {{/if}}
+                            {{#if propertyManagerAcceptsCreditCardsOffline}}
+                              <li>Credit Card (non-online)</li>
+                            {{/if}}
+                            {{#if propertyManagerAcceptsOnlinePayments}}
+                              <li>Online</li>
+                            {{/if}}
+                            {{#if propertyManagerAcceptsChecks}}
+                              <li>Checks</li>
+                            {{/if}}
+                            {{#if propertyManagerAcceptsMoneyOrders}}
+                              <li>Money Orders</li>
+                            {{/if}}
+                          </ul>
+                        </div>
+                        <!--<div class="tab-pane fade" id="tab2primary">Primary 2</div>-->
+                        <div class="tab-pane fade" id="tab3primary">
+                          <iframe
+                            width="600"
+                            height="450"
+                            frameborder="0" style="border:0"
+                            src="{{unbound map_url rentalComplexFullAddress}}">
+                          </iframe>
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="buttons-set">
+            <button class="button-xlarge pure-button btn-primary" {{action 'apply'}}>Apply</button>
+            <button class="button-xlarge pure-button btn-primary" {{action openRoommateModal id}}>Group Apply</button>
+            <!--<button class="button-xlarge pure-button">Contact</button>-->
+
+
+			<div id="socialHolder">
+        		<div id="socialShare" class="btn-group share-group">
+                    <a data-toggle="dropdown" class="btn btn-info">
+                         <i class="fa fa-share-alt fa-inverse"></i>
+                    </a>
+    				<button href="#" data-toggle="dropdown" class="btn btn-info dropdown-toggle share">
+    					<span class="caret"></span>
+    				</button>
+    				<ul class="dropdown-menu">
+<!-- Go to www.addthis.com/dashboard to generate a new set of sharing buttons -->
+<li><a href="https://api.addthis.com/oexchange/0.8/forward/facebook/offer?url=http%3A%2F%2Fwww.addthis.com&pubid=ra-54350220470aa4a5&ct=1&title=AddThis%20-%20Get%20likes%2C%20get%20shares%2C%20get%20followers&pco=tbxnj-1.0" target="_blank"><img src="https://cache.addthiscdn.com/icons/v2/thumbs/32x32/facebook.png" border="0" alt="Facebook"/></a></li>
+<li><a href="https://api.addthis.com/oexchange/0.8/forward/twitter/offer?url=http%3A%2F%2Fwww.addthis.com&pubid=ra-54350220470aa4a5&ct=1&title=AddThis%20-%20Get%20likes%2C%20get%20shares%2C%20get%20followers&pco=tbxnj-1.0" target="_blank"><img src="https://cache.addthiscdn.com/icons/v2/thumbs/32x32/twitter.png" border="0" alt="Twitter"/></a></li>
+<li><a href="https://api.addthis.com/oexchange/0.8/forward/google_plusone_share/offer?url=http%3A%2F%2Fwww.addthis.com&pubid=ra-54350220470aa4a5&ct=1&title=AddThis%20-%20Get%20likes%2C%20get%20shares%2C%20get%20followers&pco=tbxnj-1.0" target="_blank"><img src="https://cache.addthiscdn.com/icons/v2/thumbs/32x32/google_plusone_share.png" border="0" alt="Google+"/></a></li>
+<li><a href="https://api.addthis.com/oexchange/0.8/forward/pinterest/offer?url=http%3A%2F%2Fwww.addthis.com&pubid=ra-54350220470aa4a5&ct=1&title=AddThis%20-%20Get%20likes%2C%20get%20shares%2C%20get%20followers&pco=tbxnj-1.0" target="_blank"><img src="https://cache.addthiscdn.com/icons/v2/thumbs/32x32/pinterest.png" border="0" alt="Pinterest"/></a></li>
+<li><a href="https://api.addthis.com/oexchange/0.8/forward/linkedin/offer?url=http%3A%2F%2Fwww.addthis.com&pubid=ra-54350220470aa4a5&ct=1&title=AddThis%20-%20Get%20likes%2C%20get%20shares%2C%20get%20followers&pco=tbxnj-1.0" target="_blank"><img src="https://cache.addthiscdn.com/icons/v2/thumbs/32x32/linkedin.png" border="0" alt="LinkedIn"/></a></li>
+<li><a href="https://www.addthis.com/bookmark.php?source=tbx32nj-1.0&v=300&url=http%3A%2F%2Fwww.addthis.com&pubid=ra-54350220470aa4a5&ct=1&title=AddThis%20-%20Get%20likes%2C%20get%20shares%2C%20get%20followers&pco=tbxnj-1.0" target="_blank"><img src="https://cache.addthiscdn.com/icons/v2/thumbs/32x32/addthis.png" border="0" alt="Addthis"/></a></li>
+                    </ul>
+    			</div>
+            </div>
+
+      {{#if starred}}
+        <a id="star-yellow1-{{unbound id}}"style="padding:0px" {{action 'deleteStarredProperties' this.applicants}} class="pure-button star-icon-yellow"><span></span></a>
+        <a id="star-white1-{{unbound id}}" {{action 'createStarredProperties' this.applicants}} style="display:none" class="pure-button star-icon"><span></span></a>
+      {{else}}
+        <a id="star-white1-{{unbound id}}" {{action 'createStarredProperties' this.applicants}} class="pure-button star-icon"><span></span></a>
+        <a id="star-yellow1-{{unbound id}}"style="padding:0px; display:none" {{action 'deleteStarredProperties' this.applicants}} class="pure-button star-icon-yellow"><span></span></a>
+      {{/if}}
+      {{#if error}}
+        <div class="alert alert-error"> {{unbound error}} </div>
+      {{/if}}
+      {{#if success}}
+        <div class="alert alert-success"> {{unbound success}} </div>
+      {{/if}}
+            </div>
+
+          </div>
+          <!--product detail end-->
+      </div>
+  </div>
+
+{{/my-modal}}

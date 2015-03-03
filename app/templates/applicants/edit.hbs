@@ -1,0 +1,181 @@
+<!-- LinkedIn -->
+<script type="text/javascript" src="https://platform.linkedin.com/in.js">
+  api_key: 773l07ai5joh2j
+  authorize: true
+</script> <!-- LinkedIn ends -->
+
+<div class="row">
+  <div class="col-xs-12 col-sm-6 col-sm-offset-3 border-block editinfo-wrapper">
+    <div class="panel-heading">
+      <h3 class="panel-title">Edit information</h3>
+    </div>
+    <div class="panel-body">
+      {{#form-for model.applicant class="pure-form"}}
+        <div class="profile-image">
+          <div class="image-holder">
+
+            <img width="185" height="" alt="place holder" src={{unbound this.model.applicant._data.avatar}}>
+            <div class="edit-img">{{file-picker object=view.formForModel property="avatar" fileLimit=1}}</div>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-xs-12 col-sm-6 col-md-6">
+            {{#input firstName}}
+              <label for="input-first-name">First name</label>
+              {{input-field firstName class="form-control"}}
+            {{/input}}
+          </div>
+          <div class="col-xs-12 col-sm-6 col-md-6">
+            {{#input lastName}}
+              <label for="input-last-name">Last name</label>
+              {{input-field lastName class="form-control"}}
+            {{/input}}
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-xs-12 col-sm-12 col-md-12">
+            {{#input email}}
+              <label for="input-email">Email address</label>
+              {{input-field email class="form-control"}}
+            {{/input}}
+          </div>
+        </div>
+        <button type="submit" class="btn btn-primary btn-lg btn-block" {{action "update" content}} >
+        Save information
+        </button>
+      {{/form-for}}
+    </div>
+    <div class="col-xs-12 col-sm-12 col-md-12 links-group">
+      {{#link-to 'applicants.extra_info' model.applicant class="left"}}Tenant Info{{/link-to}}
+      {{#link-to 'applicants.landlord' model.applicant}}Landlord Form{{/link-to}}
+      {{#link-to 'transactions.index' class="right"}}Billing  Info{{/link-to}}
+    </div>
+  </div>
+  <div class="col-xs-12 col-sm-6 col-sm-offset-3 border-block">
+    <div class="panel-heading">
+      <h3 class="panel-title">Social Links</h3>
+    </div>
+    <div class="panel-body">
+      <div class="row">
+        <div class="col-xs-12 col-sm-12 col-md-12 form-group social-links">
+          {{#unless session.applicant.google}}
+            <div class="google"> <i></i> Connect your Google account<a class="btn btn-primary right" {{action 'googleSignIn'}}>Connect</a></div>
+          {{/unless}}
+          {{#unless session.applicant.facebook}}
+            <div class="facebook"> <i></i> Connect your Facebook account<a class="btn btn-primary right" {{action 'checkLoginState'}}>Connect</a></div>
+          {{/unless}}
+          {{#unless session.applicant.linkedin}}
+            <div class="linkedin"> <i></i> Connect your LinkedIn account<a class="btn btn-primary right" {{action 'linkedinSignIn'}}>Connect</a></div>
+          {{/unless}}
+          {{#each model.providers}}
+            {{#if connected}}
+              <div class="{{unbound provider}}"> <i></i> Connected as {{name}}<button type="submit" class="btn btn-primary social_button_{{unbound id}}" {{action 'disconnect' id}}>Disconnect</button></div>
+            {{/if}}
+          {{/each}}
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="col-xs-12 col-sm-6 col-sm-offset-3 border-block">
+    <div class="panel-heading">
+      <h3 class="panel-title">Applied Properties</h3>
+    </div>
+    <div class="panel-body">
+      <div id="property-listings" >
+        <!-- Begin Listing: 609 W GRAVERS LN-->
+        {{#each model.applies class="pure-form"}}
+          <div class="brdr bgc-fff pad-10 box-shad btm-mrg-20 property-listing">
+            <div class="media">
+              <a target="_parent" href="#" class="pull-left item-image">
+                {{#if image}}
+                  <img src="{{unbound image}}" class="img-responsive" alt="image">
+                {{else}}
+                  <img src="/assets/images/slider1.jpg" class="img-responsive" alt="image">
+                {{/if}}
+              </a>
+              <div class="clearfix visible-xs"></div>
+              <div class="media-body fnt-smaller">
+                <a target="_parent" href="#"></a>
+                <h2 class="media-heading">
+                  <a target="_parent" href="#">{{propertyAddress}}<small class="pull-right price">${{monthlyRentFloor}}</small></a>
+                </h2>
+                <ul class="list-inline mrg-0 btm-mrg-10 clr-535353">
+                  {{#if squareFootageFloor}}
+                    <li>{{squareFootageFloor}} SqFt</li>
+                    <li style="list-style: none">|</li>
+                  {{/if}}
+                  <li>{{bedroomCount}} Beds</li>
+                  <li style="list-style: none">|</li>
+                  <li>{{fullBathroomCount}} Baths</li>
+                </ul>
+                <p class="hidden-xs">{{salesyDescription}}</p>
+                <span class="fnt-smaller fnt-lighter fnt-arial">Courtesy of HS Fox &amp; Roach-Chestnut Hill
+                Evergreen</span>
+              </div>
+            </div>
+          </div>
+        {{/each}}
+        <!-- End Listing-->
+      </div>
+    </div>
+    <div>
+      {{#if model.applies}}
+        {{#link-to 'applies.index' class="btn btn-primary btn-lg btn-block"}}See All{{/link-to}}
+      {{else}}
+        <p><center>You haven't applied for any property yet</center></p>
+      {{/if}}
+    </div>
+  </div>
+  <div class="col-xs-12 col-sm-6 col-sm-offset-3 border-block">
+    <div class="panel-heading">
+      <h3 class="panel-title">{{partial 'star-yellow'}} Starred Properties</h3>
+    </div>
+    <div class="panel-body">
+      <div id="property-listings" >
+        <!-- Begin Listing: 609 W GRAVERS LN-->
+        {{#each model.starred_properties class="pure-form"}}
+          <div class="brdr bgc-fff pad-10 box-shad btm-mrg-20 property-listing">
+            <div class="media">
+              <a target="_parent" href="#" class="pull-left item-image">
+                {{#if image}}
+                  <img src="{{unbound image}}" class="img-responsive" alt="image">
+                {{else}}
+                  <img src="/assets/images/slider1.jpg" class="img-responsive" alt="image">
+                {{/if}}
+              </a>
+              <div class="clearfix visible-xs"></div>
+              <div class="media-body fnt-smaller">
+                <a target="_parent" href="#"></a>
+                <h2 class="media-heading">
+                  <a target="_parent" href="#">{{propertyAddress}}<small class="pull-right price">${{monthlyRentFloor}}</small></a>
+                </h2>
+                <ul class="list-inline mrg-0 btm-mrg-10 clr-535353">
+                  <li>{{squareFootageFloor}} SqFt</li>
+                  <li style="list-style: none">|</li>
+                  <li>{{bedroomCount}} Beds</li>
+                  <li style="list-style: none">|</li>
+                  <li>{{fullBathroomCount}} Baths</li>
+                </ul>
+                <p class="hidden-xs">{{salesyDescription}}</p>
+                <span class="fnt-smaller fnt-lighter fnt-arial">Courtesy of HS Fox &amp; Roach-Chestnut Hill
+                Evergreen</span>
+              </div>
+            </div>
+          </div>
+        {{/each}}
+        <!-- End Listing-->
+      </div>
+    </div>
+    <div>
+      {{#if model.starred_properties}}
+        {{#link-to 'starred-properties.index' class="btn btn-primary btn-lg btn-block"}}See All{{/link-to}}
+      {{else}}
+        <p><center>You haven't starred any property yet</center></p>
+      {{/if}}
+    </div>
+  </div>
+  <div class="col-xs-12 col-sm-6 col-sm-offset-3 border-block">
+    <center><button {{action "deleteRecord" model.applicant}} class="btn btn-xs btn-danger"> Delete Account</button></center>
+  </div>
+</div>
+

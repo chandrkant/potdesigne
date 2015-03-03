@@ -1,0 +1,5 @@
+{
+  "bower-override-dependencies": {
+    "ember": "emberjs/ember.js#1.6.1"
+  }
+}

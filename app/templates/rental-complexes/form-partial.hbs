@@ -1,0 +1,38 @@
+{{#form-for model class="pure-form"}}
+  <div class="panel panel-primary pure-u-1">
+    <div class="panel-heading">
+      <h3 class="panel-title">information</h3>
+    </div>
+    <div class="panel-body" >
+      <div class="row">
+
+        <div class="col-xs-12 col-sm-6 col-md-4 form-group">
+          {{input name}}
+        </div>
+        <div class="col-xs-12 col-sm-6 col-md-4 form-group">
+          {{input url}}
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-xs-12 col-sm-6 col-md-4 form-group">
+          {{input customerContactEmailAddress}}
+        </div>
+        <div class="col-xs-12 col-sm-6 col-md-4 form-group">
+          {{input customerContactPhoneNumber}}
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-xs-12 col-sm-6 col-md-4 form-group">
+          {{input fullAddress}}
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-xs-12 col-sm-8 form-group">
+           {{input salesyDescription label="Description" as="text"}}
+        </div>
+      </div>
+    </div>
+  </div>
+  <button class="btn btn-primary"{{action "submit" content}}>Save</button>
+  <button class="btn btn-default" {{action 'cancel'}} >Cancel</button>
+{{/form-for}}

@@ -1,0 +1,28 @@
+
+<div class="container">
+	<div class="row">
+        <div class="control-group" id="fields">
+    		<div class="controls"> 
+        		<form class="pure-form col-md-4 col-sm-12 col-xs-12 roommate-form" role="form" autocomplete="off">
+        		<legend>Invite Roommate Group</legend>
+        			<fieldset>
+        				<div class="form-group multiple-form-group" data-max=10>
+            				<div class="form-group input-group">
+            				<div class="roommate-img"></div>
+            					<input type="text" name="multiple[]" class="form-control">
+        						<span class="input-group-btn">
+                                    {{#if isBtn.addBtn}}
+                                    <button type="button" class="btn btn-add btn-default" {{action 'addFormGroup'}}>+</button>
+                                    {{else}}
+                                    <button type="button" class="btn btn-remove btn-danger" {{action 'removeFormGroup'}}>+</button>
+                                    {{/if}}
+                                </span>
+            				</div>
+                        </div>
+        			</fieldset>
+        			<button type="submit" class="pure-button pure-input-1 pure-button-primary">Invite</button>
+                </form>
+            </div>
+		</div>
+	</div>
+</div>

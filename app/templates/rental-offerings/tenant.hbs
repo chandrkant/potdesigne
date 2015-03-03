@@ -1,0 +1,182 @@
+{{#my-modal title="Information" ok='save' close='closeModal'}}
+<div class="row">
+  <div class="col-xs-12 col-sm-6 col-md-6 form-group">
+    <table class="table">
+       <tr class="active">
+          <td><b>DOB</b></td>
+          <td> {{bornOn}} </td>
+       </tr>
+       <tr class="active">
+          <td><b>Ssn</b></td>
+          <td> {{ssn}} </td>
+       </tr>
+       <tr class="active">
+          <td><b>Drivers License Number</b></td>
+          <td> {{driversLicenseNumber}} </td>
+       </tr>
+       <tr class="active">
+          <td><b>Drivers License State</b></td>
+          <td> {{driversLicenseState}} </td>
+       </tr>
+       <tr class="active">
+          <td><b>Phone Number</b></td>
+          <td> {{phoneNumber}} </td>
+       </tr>
+       <tr class="active">
+          <td><b>Bank Name</b></td>
+          <td> {{bankName}} </td>
+       </tr>
+       <tr class="active">
+          <td><b>Bank City And State</b></td>
+          <td> {{bankCityAndState}} </td>
+       </tr>
+       <tr class="active">
+          <td><b>Pets Description</b></td>
+          <td> {{petsDescription}} </td>
+       </tr>
+       <tr class="active">
+          <td><b>Pets Description</b></td>
+          <td> {{vehiclesDescription}} </td>
+       </tr>
+       <tr class="active">
+          <td><b>Was Ever Evicted</b></td>
+          <td> {{wasEverEvicted}} </td>
+       </tr>
+       <tr class="active">
+          <td><b>Was Ever Evicted</b></td>
+          <td> {{wasEverEvictedExplanation}} </td>
+       </tr>
+       <tr class="active">
+          <td><b>Is Felon</b></td>
+          <td> {{isFelon}} </td>
+       </tr>
+       <tr class="active">
+          <td><b>Was Ever Evicted</b></td>
+          <td> {{isFelonExplanation}} </td>
+       </tr>
+       <tr class="active">
+          <td><b>Current Home Owner</b></td>
+          <td> {{currentHomeOwner}} </td>
+       </tr>
+       <tr class="active">
+          <td><b>Current Home Owner Contact Info</b></td>
+          <td> {{currentHomeOwnerContactInfo}} </td>
+       </tr>
+       <tr class="active">
+          <td><b>Previous Home Street Address</b></td>
+          <td> {{previousHomeStreetAddress}} </td>
+       </tr>
+       <tr class="active">
+          <td><b>Previous Home Moved In On</b></td>
+          <td> {{previousHomeMovedInOn}} </td>
+       </tr>
+       <tr class="active">
+          <td><b>Previous Home Moved Out</b></td>
+          <td> {{previousHomeMovedOut}} </td>
+       </tr>
+       <tr class="active">
+          <td><b>Previous Home Owner</b></td>
+          <td> {{previousHomeOwner}} </td>
+       </tr>
+       <tr class="active">
+          <td><b>Previous Home Owner Contact Info</b></td>
+          <td> {{previousHomeOwnerContactInfo}} </td>
+       </tr>
+       {{#if victigUrl}}
+         <tr class="active">
+            <td><b>Backgroun screening URL</b></td>
+            <td> <a target="_blank" href="{{unbound victigUrl}}"> Click here to view</a></td>
+         </tr>
+       {{/if}}
+     </table>
+  </div>
+  <div class="col-xs-12 col-sm-6 col-md-6 form-group">
+    <table class="table">
+       <tr class="active">
+          <td><b>Character Reference Name</b></td>
+          <td> {{characterReferenceName}} </td>
+       </tr>
+       <tr class="active">
+          <td><b>Character Reference Contact Info</b></td>
+          <td> {{characterReferenceContactInfo}} </td>
+       </tr>
+       <tr class="active">
+          <td><b>Emergency Contact Name</b></td>
+          <td> {{emergencyContactName}} </td>
+       </tr>
+       <tr class="active">
+          <td><b>Emergency Contact Phone Number</b></td>
+          <td> {{emergencyContactPhoneNumber}} </td>
+       </tr>
+       <tr class="active">
+          <td><b>Current Home Street Address</b></td>
+          <td> {{currentHomeStreetAddress}} </td>
+       </tr>
+       <tr class="active">
+          <td><b>Current Home Moved In On</b></td>
+          <td> {{currentHomeMovedInOn}} </td>
+       </tr>
+       <tr class="active">
+          <td><b>Employment Status</b></td>
+          <td> {{employmentStatus}} </td>
+       </tr>
+       <tr class="active">
+          <td><b>Current Employment Position</b></td>
+          <td> {{currentEmploymentPosition}} </td>
+       </tr>
+       <tr class="active">
+          <td><b>Current Employment Monthly Income</b></td>
+          <td> {{currentEmploymentMonthlyIncome}} </td>
+       </tr>
+       <tr class="active">
+          <td><b>Current Employment Employer</b></td>
+          <td> {{currentEmploymentEmployer}} </td>
+       </tr>
+       <tr class="active">
+          <td><b>Current Employment Monthly Income</b></td>
+          <td> {{currentEmploymentMonthlyIncome}} </td>
+       </tr>
+       <tr class="active">
+          <td><b>Current Employment Supervisor</b></td>
+          <td> {{currentEmploymentSupervisor}} </td>
+       </tr>
+       <tr class="active">
+          <td><b>Current Employment Employer PhoneNumber</b></td>
+          <td> {{currentEmploymentEmployerPhoneNumber}} </td>
+       </tr>
+       <tr class="active">
+          <td><b>Current Employment Employer EmailAddress</b></td>
+          <td> {{currentEmploymentEmployerEmailAddress}} </td>
+       </tr>
+       <tr class="active">
+          <td><b>Current Employment StartedOn</b></td>
+          <td> {{currentEmploymentStartedOn}} </td>
+       </tr>
+       <tr class="active">
+          <td><b>Previous Employment Position</b></td>
+          <td> {{previousEmploymentPosition}} </td>
+       </tr>
+       <tr class="active">
+          <td><b>Previous Employment Monthly Income</b></td>
+          <td> {{previousEmploymentMonthlyIncome}} </td>
+       </tr>
+       <tr class="active">
+          <td><b>Previous Employment Supervisor</b></td>
+          <td> {{previousEmploymentSupervisor}} </td>
+       </tr>
+       <tr class="active">
+          <td><b>Previous Employment Employer</b></td>
+          <td> {{previousEmploymentEmployer}} </td>
+       </tr>
+       <tr class="active">
+          <td><b>Previous Employment Employer PhoneNumber</b></td>
+          <td> {{previousEmploymentEmployerPhoneNumber}} </td>
+       </tr>
+       <tr class="active">
+          <td><b>Previous Employment Employer EmailAddress</b></td>
+          <td> {{previousEmploymentEmployerEmailAddress}} </td>
+       </tr>
+     </table>
+  </div>
+</div>
+{{/my-modal}}

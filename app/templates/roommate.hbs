@@ -1,0 +1,30 @@
+{{#my-modal title=roommateInvite url=url ok='save' close='closeModal'}}
+<input type="hidden" id="rentalgeek_applicant_id" value={{unbound session.applicant.id}} >
+<input type="hidden" id="rentalgeek_rental_offering_id" value={{unbound this.applicant_data}} >
+<div style ="display:none" class="alert alert-success"></div>
+<div style ="display:none" class="alert alert-error"></div>
+<div class="container">
+  {{#if model.roommate_groups}}
+    <div>
+      <h4>Please Select a Roommate Group</h4>
+    </div>
+     <div class="row">
+      <div class="col-xs-12 col-sm-6 col-md-4 form-group">
+      {{multi-select-component
+        contentBinding="model.roommate_groups"
+        optionLabelPath="name"
+        optionValuePath="id"
+        selectionsBinding="roommate_group_list"
+        classNames="multi-select-example"
+      }}
+      </div>
+    </div>
+    <button class="button-xlarge pure-button btn-primary" {{action 'apply'}}>Apply</button>
+  {{else}}
+    <div>
+      <h4>You haven't create any Roommate Group yet.</h4>
+    </div>
+    <button class="button-xlarge pure-button btn-primary" {{action 'share' this.applicant_data}}>Share with Roommates</button>
+  {{/if}}
+</div>
+{{/my-modal}}
